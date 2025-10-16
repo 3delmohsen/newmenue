@@ -820,45 +820,112 @@
 
         .items-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            padding: 1rem 0;
         }
 
-        /* Menu Item Cards */
+        @media (min-width: 640px) {
+            .items-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .items-grid {
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            }
+        }
+
+        /* Menu Item Cards with Enhanced Image Styling */
         .menu-item {
             background-color: var(--color-surface);
             border: 1px solid var(--color-card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             cursor: pointer;
             box-shadow: var(--shadow-sm);
         }
 
         .menu-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             border-color: var(--color-primary);
+        }
+
+        .menu-item:hover .item-image {
+            transform: scale(1.05);
+        }
+
+        .menu-item:hover .item-image::before {
+            opacity: 0.1;
         }
 
         .item-image {
             width: 100%;
-            height: 120px;
-            background-color: var(--color-bg-1);
-            border-radius: 12px;
-            margin-bottom: 1rem;
+            height: 200px;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .item-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .item-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.1) 100%);
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform 0.6s ease, opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .menu-item:hover .item-image::after {
+            opacity: 1;
+            transform: translateX(100%);
+        }
+
+        .item-emoji {
             position: relative;
-            border: 1px solid var(--color-card-border-inner);
+            z-index: 3;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover .item-emoji {
+            transform: scale(1.1);
         }
 
         .item-content {
             position: relative;
             z-index: 2;
+            padding: 1.5rem;
+            background: var(--color-surface);
         }
 
         .item-name {
@@ -890,13 +957,24 @@
         /* Special Badges */
         .badge {
             position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             font-size: 0.75rem;
-            font-weight: 600;
-            z-index: 3;
+            font-weight: 700;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .badge.popular {
@@ -1276,131 +1354,130 @@
         // Theme state
         let currentTheme = 'light';
 
-        // Menu Data
+        // Menu Data with Image Gradients
         const menuData = {
             soups: {
                 name_ar: "الشوربة",
                 name_en: "Soup",
                 items: [
-                    { name_ar: "شوربة الدجاج بالكريمة", name_en: "Chicken Cream Soup", price: "95.00 جنيه", price_en: "95.00 EGP", badge: "popular" },
-                    { name_ar: "شوربة الطماطم", name_en: "Tomato Soup", price: "70.00 جنيه", price_en: "70.00 EGP" },
-                    { name_ar: "شوربة الشعرية", name_en: "Vermicelli Soup", price: "50.00 جنيه", price_en: "50.00 EGP" },
-                    { name_ar: "شوربة العدس المصرية", name_en: "Egyptian Lentil Soup", price: "60.00 جنيه", price_en: "60.00 EGP", badge: "new" }
-                ],
-                backgroundColors: ['var(--color-bg-1)', 'var(--color-bg-2)', 'var(--color-bg-3)', 'var(--color-bg-4)', 'var(--color-bg-5)']
+                    { name_ar: "شوربة الدجاج بالكريمة", name_en: "Chicken Cream Soup", price: "95.00 جنيه", price_en: "95.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FFA726, #FF7043)" },
+                    { name_ar: "شوربة الطماطم", name_en: "Tomato Soup", price: "70.00 جنيه", price_en: "70.00 EGP", image_gradient: "linear-gradient(135deg, #E53935, #FF5722)" },
+                    { name_ar: "شوربة الشعرية", name_en: "Vermicelli Soup", price: "50.00 جنيه", price_en: "50.00 EGP", image_gradient: "linear-gradient(135deg, #F9A825, #FFB74D)" },
+                    { name_ar: "شوربة العدس المصرية", name_en: "Egyptian Lentil Soup", price: "60.00 جنيه", price_en: "60.00 EGP", badge: "new", image_gradient: "linear-gradient(135deg, #8BC34A, #689F38)" }
+                ]
             },
             salads: {
                 name_ar: "السلطات",
                 name_en: "Salads",
                 items: [
-                    { name_ar: "شرائح السالمون المدخن", name_en: "Smoked Salmon Slices", price: "260.00 جنيه", price_en: "260.00 EGP", badge: "popular" },
-                    { name_ar: "سلطة سيزر الكلاسيكية", name_en: "Classic Caesar Salad", price: "95.00 جنيه", price_en: "95.00 EGP" },
-                    { name_ar: "السلطة اليونانية", name_en: "Greek Salad", price: "95.00 جنيه", price_en: "95.00 EGP" },
-                    { name_ar: "السلطة الموسمية الطازجة", name_en: "Fresh Seasonal Salad", price: "65.00 جنيه", price_en: "65.00 EGP" }
+                    { name_ar: "شرائح السالمون المدخن", name_en: "Smoked Salmon Slices", price: "260.00 جنيه", price_en: "260.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FF8A65, #FF7043)" },
+                    { name_ar: "سلطة سيزر الكلاسيكية", name_en: "Classic Caesar Salad", price: "95.00 جنيه", price_en: "95.00 EGP", image_gradient: "linear-gradient(135deg, #66BB6A, #4CAF50)" },
+                    { name_ar: "السلطة اليونانية", name_en: "Greek Salad", price: "95.00 جنيه", price_en: "95.00 EGP", image_gradient: "linear-gradient(135deg, #42A5F5, #1E88E5)" },
+                    { name_ar: "السلطة الموسمية الطازجة", name_en: "Fresh Seasonal Salad", price: "65.00 جنيه", price_en: "65.00 EGP", image_gradient: "linear-gradient(135deg, #26A69A, #00796B)" }
                 ]
             },
             pasta: {
                 name_ar: "المعكرونة",
                 name_en: "Pasta",
                 items: [
-                    { name_ar: "صوص فواكه البحر بالكريمة", name_en: "Seafood Cream Sauce", desc_ar: "سباجيتي - بيني - فوسيلي مع اختيارك من الصوص", desc_en: "Spaghetti - Penne - Fusilli with your choice of sauce", price: "180.00 جنيه", price_en: "180.00 EGP", badge: "popular" },
-                    { name_ar: "صوص بولونيز (اللحم المفروم)", name_en: "Bolognese Sauce (Minced Meat)", price: "105.00 جنيه", price_en: "105.00 EGP" },
-                    { name_ar: "صلصة الطماطم", name_en: "Tomato Sauce", price: "80.00 جنيه", price_en: "80.00 EGP" },
-                    { name_ar: "صلصة الطماطم الحارة (الأرابياتا)", name_en: "Spicy Tomato Sauce (Arrabiata)", price: "80.00 جنيه", price_en: "80.00 EGP" },
-                    { name_ar: "صلصة عيش الغراب البيضاء", name_en: "White Mushroom Sauce", price: "105.00 جنيه", price_en: "105.00 EGP" }
+                    { name_ar: "صوص فواكه البحر بالكريمة", name_en: "Seafood Cream Sauce", desc_ar: "سباجيتي - بيني - فوسيلي مع اختيارك من الصوص", desc_en: "Spaghetti - Penne - Fusilli with your choice of sauce", price: "180.00 جنيه", price_en: "180.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #26C6DA, #00ACC1)" },
+                    { name_ar: "صوص بولونيز (اللحم المفروم)", name_en: "Bolognese Sauce (Minced Meat)", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #D32F2F, #C62828)" },
+                    { name_ar: "صلصة الطماطم", name_en: "Tomato Sauce", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #FF5722, #E64A19)" },
+                    { name_ar: "صلصة الطماطم الحارة (الأرابياتا)", name_en: "Spicy Tomato Sauce (Arrabiata)", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #FF3D00, #DD2C00)" },
+                    { name_ar: "صلصة عيش الغراب البيضاء", name_en: "White Mushroom Sauce", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #A1887F, #8D6E63)" }
                 ]
             },
             pizza: {
                 name_ar: "البيتزا",
                 name_en: "Pizza",
                 items: [
-                    { name_ar: "بيتزا سلامي", name_en: "Salami Pizza", price: "135.00 جنيه", price_en: "135.00 EGP" },
-                    { name_ar: "بيتزا الدجاج", name_en: "Chicken Pizza", price: "145.00 جنيه", price_en: "145.00 EGP" },
-                    { name_ar: "بيتزا عيش الغراب", name_en: "Mushroom Pizza", price: "125.00 جنيه", price_en: "125.00 EGP" },
-                    { name_ar: "بيتزا فواكه البحر", name_en: "Seafood Pizza (Frutti de Mare)", price: "250.00 جنيه", price_en: "250.00 EGP", badge: "popular" },
-                    { name_ar: "بيتزا مارجريتا", name_en: "Margherita Pizza", price: "120.00 جنيه", price_en: "120.00 EGP" },
-                    { name_ar: "بيتزا خضروات", name_en: "Vegetarian Pizza", price: "120.00 جنيه", price_en: "120.00 EGP" }
+                    { name_ar: "بيتزا سلامي", name_en: "Salami Pizza", price: "135.00 جنيه", price_en: "135.00 EGP", image_gradient: "linear-gradient(135deg, #FF6B35, #F7931E)" },
+                    { name_ar: "بيتزا الدجاج", name_en: "Chicken Pizza", price: "145.00 جنيه", price_en: "145.00 EGP", image_gradient: "linear-gradient(135deg, #FFB74D, #FF9800)" },
+                    { name_ar: "بيتزا عيش الغراب", name_en: "Mushroom Pizza", price: "125.00 جنيه", price_en: "125.00 EGP", image_gradient: "linear-gradient(135deg, #8BC34A, #689F38)" },
+                    { name_ar: "بيتزا فواكه البحر", name_en: "Seafood Pizza (Frutti de Mare)", price: "250.00 جنيه", price_en: "250.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #29B6F6, #0288D1)" },
+                    { name_ar: "بيتزا مارجريتا", name_en: "Margherita Pizza", price: "120.00 جنيه", price_en: "120.00 EGP", image_gradient: "linear-gradient(135deg, #66BB6A, #43A047)" },
+                    { name_ar: "بيتزا خضروات", name_en: "Vegetarian Pizza", price: "120.00 جنيه", price_en: "120.00 EGP", image_gradient: "linear-gradient(135deg, #9CCC65, #7CB342)" }
                 ]
             },
             sandwiches: {
                 name_ar: "السندويتشات",
                 name_en: "Sandwiches",
                 items: [
-                    { name_ar: "السالمون المدخن", name_en: "Smoked Salmon", price: "280.00 جنيه", price_en: "280.00 EGP", badge: "popular" },
-                    { name_ar: "شرائح اللحم البقري المتبلة", name_en: "Seasoned Beef Steak", price: "185.00 جنيه", price_en: "185.00 EGP" },
-                    { name_ar: "توليب بيف برجر", name_en: "Tolip Beef Burger", price: "160.00 جنيه", price_en: "160.00 EGP" },
-                    { name_ar: "جمبري بانية", name_en: "Breaded Shrimp", price: "195.00 جنيه", price_en: "195.00 EGP" },
-                    { name_ar: "كلوب ساندويتش", name_en: "Club Sandwiches", price: "155.00 جنيه", price_en: "155.00 EGP" },
-                    { name_ar: "دجاج بانية", name_en: "Breaded Chicken", price: "150.00 جنيه", price_en: "150.00 EGP" }
+                    { name_ar: "السالمون المدخن", name_en: "Smoked Salmon", price: "280.00 جنيه", price_en: "280.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FF8A80, #FF5722)" },
+                    { name_ar: "شرائح اللحم البقري المتبلة", name_en: "Seasoned Beef Steak", price: "185.00 جنيه", price_en: "185.00 EGP", image_gradient: "linear-gradient(135deg, #8D6E63, #6D4C41)" },
+                    { name_ar: "توليب بيف برجر", name_en: "Tolip Beef Burger", price: "160.00 جنيه", price_en: "160.00 EGP", image_gradient: "linear-gradient(135deg, #D32F2F, #B71C1C)" },
+                    { name_ar: "جمبري بانية", name_en: "Breaded Shrimp", price: "195.00 جنيه", price_en: "195.00 EGP", image_gradient: "linear-gradient(135deg, #FF7043, #E64A19)" },
+                    { name_ar: "كلوب ساندويتش", name_en: "Club Sandwiches", price: "155.00 جنيه", price_en: "155.00 EGP", image_gradient: "linear-gradient(135deg, #FFB74D, #FF8F00)" },
+                    { name_ar: "دجاج بانية", name_en: "Breaded Chicken", price: "150.00 جنيه", price_en: "150.00 EGP", image_gradient: "linear-gradient(135deg, #FFA726, #F57C00)" }
                 ]
             },
             main_course: {
                 name_ar: "الأطباق الرئيسية",
                 name_en: "Main Dishes",
                 items: [
-                    { name_ar: "تشكيلة من المشويات البحرية", name_en: "Mixed Seafood Grill", price: "585.00 جنيه", price_en: "585.00 EGP", badge: "popular" },
-                    { name_ar: "جمبري مشوي", name_en: "Grilled Shrimp", price: "550.00 جنيه", price_en: "550.00 EGP" },
-                    { name_ar: "سمك فيليه مشوي أو مقلي", name_en: "Grilled or Fried Fish Fillet", price: "350.00 جنيه", price_en: "350.00 EGP" },
-                    { name_ar: "تشكيلة من المشويات الشرقية", name_en: "Oriental Mix Grill", price: "515.00 جنيه", price_en: "515.00 EGP", badge: "popular" },
-                    { name_ar: "فيليه اللحم البقري المشوي", name_en: "Grilled Beef Fillet", price: "515.00 جنيه", price_en: "515.00 EGP" },
-                    { name_ar: "كفتة مشوية", name_en: "Grilled Kofta", price: "220.00 جنيه", price_en: "220.00 EGP" },
-                    { name_ar: "دجاج مشوي مع الروزماري", name_en: "Grilled Rosemary Chicken", price: "220.00 جنيه", price_en: "220.00 EGP" },
-                    { name_ar: "دجاج بانية", name_en: "Breaded Chicken", price: "210.00 جنيه", price_en: "210.00 EGP" },
-                    { name_ar: "شيش طاووق", name_en: "Chicken Shish Tawook", price: "200.00 جنيه", price_en: "200.00 EGP" }
+                    { name_ar: "تشكيلة من المشويات البحرية", name_en: "Mixed Seafood Grill", price: "585.00 جنيه", price_en: "585.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #26C6DA, #0097A7)" },
+                    { name_ar: "جمبري مشوي", name_en: "Grilled Shrimp", price: "550.00 جنيه", price_en: "550.00 EGP", image_gradient: "linear-gradient(135deg, #FF7043, #D84315)" },
+                    { name_ar: "سمك فيليه مشوي أو مقلي", name_en: "Grilled or Fried Fish Fillet", price: "350.00 جنيه", price_en: "350.00 EGP", image_gradient: "linear-gradient(135deg, #42A5F5, #1976D2)" },
+                    { name_ar: "تشكيلة من المشويات الشرقية", name_en: "Oriental Mix Grill", price: "515.00 جنيه", price_en: "515.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #8D6E63, #5D4037)" },
+                    { name_ar: "فيليه اللحم البقري المشوي", name_en: "Grilled Beef Fillet", price: "515.00 جنيه", price_en: "515.00 EGP", image_gradient: "linear-gradient(135deg, #D32F2F, #B71C1C)" },
+                    { name_ar: "كفتة مشوية", name_en: "Grilled Kofta", price: "220.00 جنيه", price_en: "220.00 EGP", image_gradient: "linear-gradient(135deg, #A1887F, #6D4C41)" },
+                    { name_ar: "دجاج مشوي مع الروزماري", name_en: "Grilled Rosemary Chicken", price: "220.00 جنيه", price_en: "220.00 EGP", image_gradient: "linear-gradient(135deg, #FFB74D, #F57C00)" },
+                    { name_ar: "دجاج بانية", name_en: "Breaded Chicken", price: "210.00 جنيه", price_en: "210.00 EGP", image_gradient: "linear-gradient(135deg, #FFA726, #E65100)" },
+                    { name_ar: "شيش طاووق", name_en: "Chicken Shish Tawook", price: "200.00 جنيه", price_en: "200.00 EGP", image_gradient: "linear-gradient(135deg, #FF8A65, #BF360C)" }
                 ]
             },
             fresh_beverages: {
                 name_ar: "مشروبات طازجة",
                 name_en: "Fresh Beverages",
                 items: [
-                    { name_ar: "برتقال طازج", name_en: "Fresh Orange", price: "85.00 جنيه", price_en: "85.00 EGP" },
-                    { name_ar: "ليمون طازج", name_en: "Fresh Lemon", price: "85.00 جنيه", price_en: "85.00 EGP" },
-                    { name_ar: "مانجو طازجة", name_en: "Fresh Mango", price: "85.00 جنيه", price_en: "85.00 EGP" },
-                    { name_ar: "جوافة طازجة", name_en: "Fresh Guava", price: "85.00 جنيه", price_en: "85.00 EGP" },
-                    { name_ar: "فلوريدا", name_en: "Florida", price: "85.00 جنيه", price_en: "85.00 EGP" },
-                    { name_ar: "كوكتيل جوافة ومانجو وبرتقال", name_en: "Guava, Mango, Orange Cocktail", price: "95.00 جنيه", price_en: "95.00 EGP", badge: "popular" },
-                    { name_ar: "صن شاين", name_en: "Sun Shine", price: "85.00 جنيه", price_en: "85.00 EGP" },
-                    { name_ar: "أورانج فيليب", name_en: "Orange Philip", price: "90.00 جنيه", price_en: "90.00 EGP" },
-                    { name_ar: "فيرجن بينا كولادا", name_en: "Virgin Pina Colada", price: "90.00 جنيه", price_en: "90.00 EGP" }
+                    { name_ar: "برتقال طازج", name_en: "Fresh Orange", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FF9800, #F57C00)" },
+                    { name_ar: "ليمون طازج", name_en: "Fresh Lemon", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FFEB3B, #F9A825)" },
+                    { name_ar: "مانجو طازجة", name_en: "Fresh Mango", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FFC107, #FF8F00)" },
+                    { name_ar: "جوافة طازجة", name_en: "Fresh Guava", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #E91E63, #C2185B)" },
+                    { name_ar: "فلوريدا", name_en: "Florida", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FF5722, #D84315)" },
+                    { name_ar: "كوكتيل جوافة ومانجو وبرتقال", name_en: "Guava, Mango, Orange Cocktail", price: "95.00 جنيه", price_en: "95.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FF6D00, #E65100)" },
+                    { name_ar: "صن شاين", name_en: "Sun Shine", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FFC107, #FF8F00)" },
+                    { name_ar: "أورانج فيليب", name_en: "Orange Philip", price: "90.00 جنيه", price_en: "90.00 EGP", image_gradient: "linear-gradient(135deg, #FF9800, #E65100)" },
+                    { name_ar: "فيرجن بينا كولادا", name_en: "Virgin Pina Colada", price: "90.00 جنيه", price_en: "90.00 EGP", image_gradient: "linear-gradient(135deg, #FFEB3B, #FFC107)" }
                 ]
             },
             hot_drinks: {
                 name_ar: "مشروبات ساخنة",
                 name_en: "Hot Drinks",
                 items: [
-                    { name_ar: "شاي أسود", name_en: "Black Tea", price: "40.00 جنيه", price_en: "40.00 EGP" },
-                    { name_ar: "شاي أخضر", name_en: "Green Tea", price: "40.00 جنيه", price_en: "40.00 EGP" },
-                    { name_ar: "ينسون", name_en: "Anise", price: "40.00 جنيه", price_en: "40.00 EGP" },
-                    { name_ar: "نعناع", name_en: "Mint", price: "40.00 جنيه", price_en: "40.00 EGP" },
-                    { name_ar: "بابونج", name_en: "Chamomile", price: "40.00 جنيه", price_en: "40.00 EGP" },
-                    { name_ar: "قهوة تركية", name_en: "Turkish Coffee", price: "80.00 جنيه", price_en: "80.00 EGP" },
-                    { name_ar: "قهوة فرنسية", name_en: "French Coffee", price: "105.00 جنيه", price_en: "105.00 EGP" },
-                    { name_ar: "إسبريسو", name_en: "Espresso", price: "80.00 جنيه", price_en: "80.00 EGP" },
-                    { name_ar: "قهوة أمريكية", name_en: "American Coffee", price: "80.00 جنيه", price_en: "80.00 EGP" },
-                    { name_ar: "كابتشينو", name_en: "Cappuccino", price: "105.00 جنيه", price_en: "105.00 EGP" },
-                    { name_ar: "إسبريسو لاتيه", name_en: "Espresso Latte", price: "105.00 جنيه", price_en: "105.00 EGP" },
-                    { name_ar: "إسبريسو ماكياتو", name_en: "Espresso Macchiato", price: "80.00 جنيه", price_en: "80.00 EGP" }
+                    { name_ar: "شاي أسود", name_en: "Black Tea", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #8D6E63, #5D4037)" },
+                    { name_ar: "شاي أخضر", name_en: "Green Tea", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #66BB6A, #388E3C)" },
+                    { name_ar: "ينسون", name_en: "Anise", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #A1887F, #6D4C41)" },
+                    { name_ar: "نعناع", name_en: "Mint", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #4CAF50, #2E7D32)" },
+                    { name_ar: "بابونج", name_en: "Chamomile", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #FFF176, #F9A825)" },
+                    { name_ar: "قهوة تركية", name_en: "Turkish Coffee", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #6D4C41, #3E2723)" },
+                    { name_ar: "قهوة فرنسية", name_en: "French Coffee", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #8D6E63, #4E342E)" },
+                    { name_ar: "إسبريسو", name_en: "Espresso", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #5D4037, #3E2723)" },
+                    { name_ar: "قهوة أمريكية", name_en: "American Coffee", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #795548, #4E342E)" },
+                    { name_ar: "كابتشينو", name_en: "Cappuccino", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #A1887F, #5D4037)" },
+                    { name_ar: "إسبريسو لاتيه", name_en: "Espresso Latte", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #BCAAA4, #8D6E63)" },
+                    { name_ar: "إسبريسو ماكياتو", name_en: "Espresso Macchiato", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #6D4C41, #4E342E)" }
                 ]
             },
             soft_drinks: {
                 name_ar: "مشروبات غازية",
                 name_en: "Soft Drinks",
                 items: [
-                    { name_ar: "مياه معدنية صغيرة", name_en: "Small Mineral Water", price: "25.00 جنيه", price_en: "25.00 EGP" },
-                    { name_ar: "كوكاكولا، سبرايت، فانتا", name_en: "Coca-Cola, Sprite, Fanta", price: "50.00 جنيه", price_en: "50.00 EGP" },
-                    { name_ar: "ريد بول", name_en: "Red Bull", price: "85.00 جنيه", price_en: "85.00 EGP" },
-                    { name_ar: "بيريل فيروز", name_en: "Beryl Fairuz", price: "85.00 جنيه", price_en: "85.00 EGP" },
-                    { name_ar: "مياه فوارة", name_en: "Sparkling Water", price: "65.00 جنيه", price_en: "65.00 EGP" }
+                    { name_ar: "مياه معدنية صغيرة", name_en: "Small Mineral Water", price: "25.00 جنيه", price_en: "25.00 EGP", image_gradient: "linear-gradient(135deg, #81D4FA, #29B6F6)" },
+                    { name_ar: "كوكاكولا، سبرايت، فانتا", name_en: "Coca-Cola, Sprite, Fanta", price: "50.00 جنيه", price_en: "50.00 EGP", image_gradient: "linear-gradient(135deg, #F44336, #D32F2F)" },
+                    { name_ar: "ريد بول", name_en: "Red Bull", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #2196F3, #0D47A1)" },
+                    { name_ar: "بيريل فيروز", name_en: "Beryl Fairuz", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #00BCD4, #0097A7)" },
+                    { name_ar: "مياه فوارة", name_en: "Sparkling Water", price: "65.00 جنيه", price_en: "65.00 EGP", image_gradient: "linear-gradient(135deg, #B3E5FC, #03A9F4)" }
                 ]
             },
             desserts: {
                 name_ar: "حلويات",
                 name_en: "Desserts",
                 items: [
-                    { name_ar: "سلطة فواكه", name_en: "Fruit Salad", price: "110.00 جنيه", price_en: "110.00 EGP" },
-                    { name_ar: "كيك الجبنة", name_en: "Cheese Cake", price: "110.00 جنيه", price_en: "110.00 EGP", badge: "popular" },
-                    { name_ar: "براونيز الشوكولاتة", name_en: "Chocolate Brownies", price: "110.00 جنيه", price_en: "110.00 EGP" },
-                    { name_ar: "تشكيلة الحلويات الشرقية", name_en: "Oriental Sweets", price: "90.00 جنيه", price_en: "90.00 EGP" }
+                    { name_ar: "سلطة فواكه", name_en: "Fruit Salad", price: "110.00 جنيه", price_en: "110.00 EGP", image_gradient: "linear-gradient(135deg, #FF5722, #E91E63)" },
+                    { name_ar: "كيك الجبنة", name_en: "Cheese Cake", price: "110.00 جنيه", price_en: "110.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FFF176, #FFC107)" },
+                    { name_ar: "براونيز الشوكولاتة", name_en: "Chocolate Brownies", price: "110.00 جنيه", price_en: "110.00 EGP", image_gradient: "linear-gradient(135deg, #6D4C41, #3E2723)" },
+                    { name_ar: "تشكيلة الحلويات الشرقية", name_en: "Oriental Sweets", price: "90.00 جنيه", price_en: "90.00 EGP", image_gradient: "linear-gradient(135deg, #FFB74D, #F57C00)" }
                 ]
             }
         };
@@ -1501,18 +1578,26 @@
             });
         }
 
-        // Create menu item
+        // Create menu item with gradient images
         function createMenuItem(item) {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'menu-item';
             
             const imageDiv = document.createElement('div');
             imageDiv.className = 'item-image';
-            imageDiv.textContent = '🍽️';
             
-            // Set random background color
-            const backgrounds = ['var(--color-bg-1)', 'var(--color-bg-2)', 'var(--color-bg-3)', 'var(--color-bg-4)', 'var(--color-bg-5)', 'var(--color-bg-6)', 'var(--color-bg-7)', 'var(--color-bg-8)'];
-            imageDiv.style.backgroundColor = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            // Use gradient from item data or fallback
+            if (item.image_gradient) {
+                imageDiv.style.background = item.image_gradient;
+            } else {
+                const backgrounds = ['var(--color-bg-1)', 'var(--color-bg-2)', 'var(--color-bg-3)', 'var(--color-bg-4)', 'var(--color-bg-5)', 'var(--color-bg-6)', 'var(--color-bg-7)', 'var(--color-bg-8)'];
+                imageDiv.style.backgroundColor = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            }
+            
+            const emojiSpan = document.createElement('span');
+            emojiSpan.className = 'item-emoji';
+            emojiSpan.textContent = '🍽️';
+            imageDiv.appendChild(emojiSpan);
             
             const contentDiv = document.createElement('div');
             contentDiv.className = 'item-content';
@@ -1549,10 +1634,10 @@
                 const badge = document.createElement('div');
                 badge.className = `badge ${item.badge}`;
                 badge.textContent = currentLanguage === 'ar' ? 
-                    (item.badge === 'popular' ? 'الأكثر طلباً' : 'جديد') :
-                    (item.badge === 'popular' ? 'Popular' : 'New');
-                badge.setAttribute('data-ar', item.badge === 'popular' ? 'الأكثر طلباً' : 'جديد');
-                badge.setAttribute('data-en', item.badge === 'popular' ? 'Popular' : 'New');
+                    (item.badge === 'popular' ? 'مميز ⭐' : 'جديد ✨') :
+                    (item.badge === 'popular' ? 'Popular ⭐' : 'New ✨');
+                badge.setAttribute('data-ar', item.badge === 'popular' ? 'مميز ⭐' : 'جديد ✨');
+                badge.setAttribute('data-en', item.badge === 'popular' ? 'Popular ⭐' : 'New ✨');
                 itemDiv.appendChild(badge);
             }
             
