@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم توليب - Tolip Restaurant</title>
+    <link rel="icon" href="Picture111.png" type="image/png">
+    <style>
+        /* Design System CSS */
+        :root {
+          /* Primitive Color Tokens */
+          --color-white: rgba(255, 255, 255, 1);
+          --color-black: rgba(0, 0, 0, 1);
+          --color-cream-50: rgba(252, 252, 249, 1);
+          --color-cream-100: rgba(255, 255, 253, 1);
+          --color-gray-200: rgba(245, 245, 245, 1);
+          --color-gray-300: rgba(167, 169, 169, 1);
+          --color-gray-400: rgba(119, 124, 124, 1);
+          --color-slate-500: rgba(98, 108, 113, 1);
+          --color-brown-600: rgba(94, 82, 64, 1);
+          --color-charcoal-700: rgba(31, 33, 33, 1);
+          --color-charcoal-800: rgba(38, 40, 40, 1);
+          --color-slate-900: rgba(19, 52, 59, 1);
+          --color-teal-300: rgba(50, 184, 198, 1);
+          --color-teal-400: rgba(45, 166, 178, 1);
+          --color-teal-500: rgba(33, 128, 141, 1);
+          --color-teal-600: rgba(29, 116, 128, 1);
+          --color-teal-700: rgba(26, 104, 115, 1);
+          --color-teal-800: rgba(41, 150, 161, 1);
+          --color-red-400: rgba(255, 84, 89, 1);
+          --color-red-500: rgba(192, 21, 47, 1);
+          --color-orange-400: rgba(230, 129, 97, 1);
+          --color-orange-500: rgba(168, 75, 47, 1);
+
+          /* RGB versions for opacity control */
+          --color-brown-600-rgb: 94, 82, 64;
+          --color-teal-500-rgb: 33, 128, 141;
+          --color-slate-900-rgb: 19, 52, 59;
+          --color-slate-500-rgb: 98, 108, 113;
+          --color-red-500-rgb: 192, 21, 47;
+          --color-red-400-rgb: 255, 84, 89;
+          --color-orange-500-rgb: 168, 75, 47;
+          --color-orange-400-rgb: 230, 129, 97;
+
+          /* Background color tokens (Light Mode) */
+          --color-bg-1: rgba(59, 130, 246, 0.08);
+          --color-bg-2: rgba(245, 158, 11, 0.08);
+          --color-bg-3: rgba(34, 197, 94, 0.08);
+          --color-bg-4: rgba(239, 68, 68, 0.08);
+          --color-bg-5: rgba(147, 51, 234, 0.08);
+          --color-bg-6: rgba(249, 115, 22, 0.08);
+          --color-bg-7: rgba(236, 72, 153, 0.08);
+          --color-bg-8: rgba(6, 182, 212, 0.08);
+
+          /* Semantic Color Tokens (Light Mode) */
+          --color-background: var(--color-cream-50);
+          --color-surface: var(--color-cream-100);
+          --color-text: var(--color-slate-900);
+          --color-text-secondary: var(--color-slate-500);
+          --color-primary: var(--color-teal-500);
+          --color-primary-hover: var(--color-teal-600);
+          --color-primary-active: var(--color-teal-700);
+          --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+          --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-btn-primary-text: var(--color-cream-50);
+          --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-error: var(--color-red-500);
+          --color-success: var(--color-teal-500);
+          --color-warning: var(--color-orange-500);
+          --color-info: var(--color-slate-500);
+          --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+          --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+          /* Common style patterns */
+          --focus-ring: 0 0 0 3px var(--color-focus-ring);
+          --focus-outline: 2px solid var(--color-primary);
+          --status-bg-opacity: 0.15;
+          --status-border-opacity: 0.25;
+
+          /* RGB versions for opacity control */
+          --color-success-rgb: 33, 128, 141;
+          --color-error-rgb: 192, 21, 47;
+          --color-warning-rgb: 168, 75, 47;
+          --color-info-rgb: 98, 108, 113;
+
+          /* Typography */
+          --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+            Monaco, Consolas, monospace;
+          --font-size-xs: 11px;
+          --font-size-sm: 12px;
+          --font-size-base: 14px;
+          --font-size-md: 14px;
+          --font-size-lg: 16px;
+          --font-size-xl: 18px;
+          --font-size-2xl: 20px;
+          --font-size-3xl: 24px;
+          --font-size-4xl: 30px;
+          --font-weight-normal: 400;
+          --font-weight-medium: 500;
+          --font-weight-semibold: 550;
+          --font-weight-bold: 600;
+          --line-height-tight: 1.2;
+          --line-height-normal: 1.5;
+          --letter-spacing-tight: -0.01em;
+
+          /* Spacing */
+          --space-0: 0;
+          --space-1: 1px;
+          --space-2: 2px;
+          --space-4: 4px;
+          --space-6: 6px;
+          --space-8: 8px;
+          --space-10: 10px;
+          --space-12: 12px;
+          --space-16: 16px;
+          --space-20: 20px;
+          --space-24: 24px;
+          --space-32: 32px;
+
+          /* Border Radius */
+          --radius-sm: 6px;
+          --radius-base: 8px;
+          --radius-md: 10px;
+          --radius-lg: 12px;
+          --radius-full: 9999px;
+
+          /* Shadows */
+          --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+          --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+          --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+            0 2px 4px -1px rgba(0, 0, 0, 0.02);
+          --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+            0 4px 6px -2px rgba(0, 0, 0, 0.02);
+          --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+          /* Animation */
+          --duration-fast: 150ms;
+          --duration-normal: 250ms;
+          --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+          /* Layout */
+          --container-sm: 640px;
+          --container-md: 768px;
+          --container-lg: 1024px;
+          --container-xl: 1280px;
+        }
+
+        /* Manual theme override takes precedence */
+        [data-theme="dark"] {
+          --color-gray-400-rgb: 119, 124, 124;
+          --color-teal-300-rgb: 50, 184, 198;
+          --color-gray-300-rgb: 167, 169, 169;
+          --color-gray-200-rgb: 245, 245, 245;
+
+          --color-bg-1: rgba(29, 78, 216, 0.2);
+          --color-bg-2: rgba(180, 83, 9, 0.2);
+          --color-bg-3: rgba(21, 128, 61, 0.2);
+          --color-bg-4: rgba(185, 28, 28, 0.2);
+          --color-bg-5: rgba(107, 33, 168, 0.2);
+          --color-bg-6: rgba(194, 65, 12, 0.2);
+          --color-bg-7: rgba(190, 24, 93, 0.2);
+          --color-bg-8: rgba(8, 145, 178, 0.2);
+
+          --color-background: #1a1a1a;
+          --color-surface: #2d2d2d;
+          --color-text: #ffffff;
+          --color-text-secondary: rgba(224, 224, 224, 0.8);
+          --color-primary: var(--color-teal-300);
+          --color-primary-hover: var(--color-teal-400);
+          --color-primary-active: var(--color-teal-800);
+          --color-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+          --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.3);
+          --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.4);
+          --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+          --color-error: var(--color-red-400);
+          --color-success: var(--color-teal-300);
+          --color-warning: var(--color-orange-400);
+          --color-info: var(--color-gray-300);
+          --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+          --color-btn-primary-text: var(--color-slate-900);
+          --color-card-border: rgba(var(--color-gray-400-rgb), 0.25);
+          --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.2);
+          --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+          --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+          --color-success-rgb: var(--color-teal-300-rgb);
+          --color-error-rgb: var(--color-red-400-rgb);
+          --color-warning-rgb: var(--color-orange-400-rgb);
+          --color-info-rgb: var(--color-gray-300-rgb);
+        }
+
+        /* Auto dark mode (only when no manual theme is set) */
+        @media (prefers-color-scheme: dark) {
+          :root:not([data-theme]) {
+          :root {
+            --color-gray-400-rgb: 119, 124, 124;
+            --color-teal-300-rgb: 50, 184, 198;
+            --color-gray-300-rgb: 167, 169, 169;
+            --color-gray-200-rgb: 245, 245, 245;
+
+            --color-bg-1: rgba(29, 78, 216, 0.15);
+            --color-bg-2: rgba(180, 83, 9, 0.15);
+            --color-bg-3: rgba(21, 128, 61, 0.15);
+            --color-bg-4: rgba(185, 28, 28, 0.15);
+            --color-bg-5: rgba(107, 33, 168, 0.15);
+            --color-bg-6: rgba(194, 65, 12, 0.15);
+            --color-bg-7: rgba(190, 24, 93, 0.15);
+            --color-bg-8: rgba(8, 145, 178, 0.15);
+
+            --color-background: var(--color-charcoal-700);
+            --color-surface: var(--color-charcoal-800);
+            --color-text: var(--color-gray-200);
+            --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+            --color-primary: var(--color-teal-300);
+            --color-primary-hover: var(--color-teal-400);
+            --color-primary-active: var(--color-teal-800);
+            --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+            --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+            --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+            --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+            --color-error: var(--color-red-400);
+            --color-success: var(--color-teal-300);
+            --color-warning: var(--color-orange-400);
+            --color-info: var(--color-gray-300);
+            --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+            --color-btn-primary-text: var(--color-slate-900);
+            --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+            --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+            --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+            --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+            --color-success-rgb: var(--color-teal-300-rgb);
+            --color-error-rgb: var(--color-red-400-rgb);
+            --color-warning-rgb: var(--color-orange-400-rgb);
+            --color-info-rgb: var(--color-gray-300-rgb);
+          }
+        }
+
+        /* Light theme explicit override */
+        [data-theme="light"] {
+          --color-background: var(--color-cream-50);
+          --color-surface: var(--color-cream-100);
+          --color-text: var(--color-slate-900);
+          --color-text-secondary: var(--color-slate-500);
+          --color-primary: var(--color-teal-500);
+          --color-primary-hover: var(--color-teal-600);
+          --color-primary-active: var(--color-teal-700);
+          --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+          --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+          --color-btn-primary-text: var(--color-cream-50);
+          --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+          --color-error: var(--color-red-500);
+          --color-success: var(--color-teal-500);
+          --color-warning: var(--color-orange-500);
+          --color-info: var(--color-slate-500);
+          --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+          --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+          --color-success-rgb: var(--color-teal-500-rgb);
+          --color-error-rgb: var(--color-red-500-rgb);
+          --color-warning-rgb: var(--color-orange-500-rgb);
+          --color-info-rgb: var(--color-slate-500-rgb);
+
+          /* Light mode background colors */
+          --color-bg-1: rgba(59, 130, 246, 0.08);
+          --color-bg-2: rgba(245, 158, 11, 0.08);
+          --color-bg-3: rgba(34, 197, 94, 0.08);
+          --color-bg-4: rgba(239, 68, 68, 0.08);
+          --color-bg-5: rgba(147, 51, 234, 0.08);
+          --color-bg-6: rgba(249, 115, 22, 0.08);
+          --color-bg-7: rgba(236, 72, 153, 0.08);
+          --color-bg-8: rgba(6, 182, 212, 0.08);
+        }
+        }
+
+        /* Modern Custom Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Animated Background Shapes */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, 
+                rgba(50, 184, 198, 0.1),
+                rgba(33, 128, 141, 0.15));
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 70%;
+            right: -5%;
+            animation-delay: -7s;
+        }
+
+        .shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            left: 80%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-20px, 20px) rotate(180deg); }
+            75% { transform: translate(20px, -10px) rotate(270deg); }
+        }
+
+        /* Glass Container */
+        .glass-container {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, 
+                rgba(33, 128, 141, 0.9) 0%,
+                rgba(50, 184, 198, 0.8) 50%,
+                rgba(41, 150, 161, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 10px 30px rgba(33, 128, 141, 0.3);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 70%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-30%, -30%) rotate(180deg); }
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.9),
+                rgba(255, 255, 255, 0.7));
+            padding: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .restaurant-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+                         0 0 20px rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            animation: titleGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.8); }
+        }
+
+        .welcome-text {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header Controls */
+        .header-controls {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            z-index: 10;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent);
+            transition: left 0.5s;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .lang-btn:hover:before {
+            left: 100%;
+        }
+
+        /* Theme Toggle Button */
+        .theme-btn {
+            background: linear-gradient(45deg, 
+                rgba(255, 255, 255, 0.25),
+                rgba(255, 255, 255, 0.15));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-btn:hover {
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-icon {
+            position: absolute;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sun-icon {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .moon-icon {
+            opacity: 0;
+            transform: rotate(180deg) scale(0.5);
+        }
+
+        [data-theme="dark"] .sun-icon {
+            opacity: 0;
+            transform: rotate(-180deg) scale(0.5);
+        }
+
+        [data-theme="dark"] .moon-icon {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        /* Navigation */
+        .nav-container {
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .nav-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Navigation Dropdown */
+        .mobile-nav-toggle {
+            display: none;
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mobile-nav-toggle:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .mobile-nav-toggle.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            box-shadow: var(--shadow-lg);
+            z-index: 20;
+            max-height: 60vh;
+            overflow-y: auto;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-dropdown.show {
+            display: block;
+            animation: dropdownShow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes dropdownShow {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 0.75rem;
+        }
+
+        .mobile-nav-item:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-item:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        .mobile-nav-item.active {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .mobile-nav-item .nav-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .mobile-nav-item .nav-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Desktop Navigation with Scroll Improvements */
+        .nav-scroll-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-grid {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 0 2rem;
+        }
+
+        .nav-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Scroll Indicators */
+        .nav-scroll-indicator {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2rem;
+            pointer-events: none;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-scroll-indicator.left {
+            left: 0;
+            background: linear-gradient(to right, var(--color-surface), transparent);
+        }
+
+        .nav-scroll-indicator.right {
+            right: 0;
+            background: linear-gradient(to left, var(--color-surface), transparent);
+        }
+
+        .scroll-arrow {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border: none;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .scroll-arrow:hover {
+            background: var(--color-primary-hover);
+            transform: scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-item {
+            background-color: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-align: center;
+            box-shadow: var(--shadow-xs);
+            min-width: 140px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            touch-action: manipulation;
+        }
+
+        .nav-item:hover {
+            background-color: var(--color-secondary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-item.active {
+            background-color: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-item.active .nav-title {
+            color: var(--color-btn-primary-text);
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            color: var(--color-text);
+            font-size: 0.875rem;
+            line-height: 1.2;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-section {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .menu-section.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--color-text);
+            position: relative;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Menu Item Cards */
+        .menu-item {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 120px;
+            background-color: var(--color-bg-1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            position: relative;
+            border: 1px solid var(--color-card-border-inner);
+        }
+
+        .item-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .item-description {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-align: center;
+            padding: 0.75rem;
+            background-color: var(--color-bg-1);
+            border-radius: 8px;
+            border: 1px solid var(--color-card-border-inner);
+        }
+
+        /* Special Badges */
+        .badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 3;
+        }
+
+        .badge.popular {
+            background-color: var(--color-error);
+            color: var(--color-white);
+        }
+
+        .badge.new {
+            background-color: var(--color-success);
+            color: var(--color-white);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, 
+                var(--color-teal-500),
+                var(--color-teal-300));
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(33, 128, 141, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Show mobile dropdown, hide desktop nav */
+            .mobile-nav-toggle {
+                display: flex;
+            }
+
+            .nav-scroll-container {
+                display: none;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            /* When mobile nav is in horizontal mode */
+            .nav-container.horizontal-mode .mobile-nav-toggle {
+                display: none;
+            }
+
+            .nav-container.horizontal-mode .nav-scroll-container {
+                display: block;
+            }
+
+            /* Improved mobile horizontal navigation */
+            .nav-container.horizontal-mode .nav-grid {
+                gap: 0.5rem;
+                padding: 0.5rem;
+                scroll-padding: 0.5rem;
+            }
+
+            .nav-container.horizontal-mode .nav-item {
+                min-width: 100px;
+                padding: 0.6rem 0.8rem;
+                border-radius: 12px;
+                white-space: nowrap;
+            }
+
+            .nav-container.horizontal-mode .nav-icon {
+                font-size: 1.1rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .nav-container.horizontal-mode .nav-title {
+                font-size: 0.75rem;
+                line-height: 1.1;
+            }
+
+            /* Enhanced scroll indicators for mobile */
+            .nav-container.horizontal-mode .nav-scroll-indicator {
+                width: 1.5rem;
+            }
+
+            .nav-container.horizontal-mode .scroll-arrow {
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: 0.7rem;
+            }
+
+            .items-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .restaurant-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .header {
+                padding: 1.5rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .nav-container {
+                padding: 0.75rem 1rem;
+            }
+
+            .lang-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .restaurant-title {
+                font-size: 1.5rem;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .header-controls {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            /* Ultra compact mobile nav items */
+            .nav-container.horizontal-mode .nav-item {
+                min-width: 85px;
+                padding: 0.5rem 0.6rem;
+            }
+
+            .nav-container.horizontal-mode .nav-icon {
+                font-size: 1rem;
+                margin-bottom: 0.1rem;
+            }
+
+            .nav-container.horizontal-mode .nav-title {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Navigation Mode Toggle Button */
+        .nav-mode-toggle {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 15;
+            display: none;
+        }
+
+        .nav-mode-toggle:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        @media (max-width: 768px) {
+            .nav-mode-toggle {
+                display: block;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(33, 128, 141, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--color-teal-500);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* RTL Support */
+        [dir="ltr"] .header-controls {
+            right: auto;
+            left: 2rem;
+        }
+
+        [dir="ltr"] .nav-item,
+        [dir="ltr"] .menu-item {
+            text-align: left;
+        }
+
+        [dir="ltr"] .badge {
+            right: auto;
+            left: 1rem;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <!-- Animated Background Shapes -->
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="glass-container" style="margin: 1rem; min-height: calc(100vh - 2rem);">
+        <!-- Header -->
+        <header class="header">
+            <!-- Theme & Language Toggles -->
+            <div class="header-controls">
+                <button class="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                    <span class="theme-icon sun-icon">☀️</span>
+                    <span class="theme-icon moon-icon">🌙</span>
+                </button>
+                <button class="lang-btn" onclick="toggleLanguage()">
+                    <span id="lang-text">EN</span>
+                </button>
+            </div>
+
+            <div class="logo-container">
+                <img src="Picture1.png" alt="Logo" class="logo" onerror="this.style.display='none'">
+            </div>
+            <h1 class="restaurant-title" id="restaurant-title">مطعم توليب</h1>
+            <p class="welcome-text" id="welcome-text">مرحباً بكم في منيو مطعم توليب</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-container">
+            <!-- Mobile Navigation Mode Toggle -->
+            <button class="nav-mode-toggle" onclick="toggleNavMode()" title="تبديل وضع التنقل">⇄</button>
+            
+            <!-- Mobile Dropdown Navigation -->
+            <div class="nav-wrapper">
+                <button class="mobile-nav-toggle" onclick="toggleMobileNav()">
+                    <span id="selected-category">الشوربة</span>
+                    <span class="dropdown-arrow">▼</span>
+                </button>
+                
+                <div class="mobile-dropdown" id="mobile-dropdown">
+                    <div class="mobile-nav-item active" data-category="soups">
+                        <span class="nav-icon">🍲</span>
+                        <div class="nav-title" data-ar="الشوربة" data-en="Soup">الشوربة</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="salads">
+                        <span class="nav-icon">🥗</span>
+                        <div class="nav-title" data-ar="السلطات" data-en="Salads">السلطات</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="pasta">
+                        <span class="nav-icon">🍝</span>
+                        <div class="nav-title" data-ar="المعكرونة" data-en="Pasta">المعكرونة</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="pizza">
+                        <span class="nav-icon">🍕</span>
+                        <div class="nav-title" data-ar="البيتزا" data-en="Pizza">البيتزا</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="sandwiches">
+                        <span class="nav-icon">🥪</span>
+                        <div class="nav-title" data-ar="السندويتشات" data-en="Sandwiches">السندويتشات</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="main_course">
+                        <span class="nav-icon">🍖</span>
+                        <div class="nav-title" data-ar="الأطباق الرئيسية" data-en="Main Dishes">الأطباق الرئيسية</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="fresh_beverages">
+                        <span class="nav-icon">🥤</span>
+                        <div class="nav-title" data-ar="مشروبات طازجة" data-en="Fresh Beverages">مشروبات طازجة</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="hot_drinks">
+                        <span class="nav-icon">☕</span>
+                        <div class="nav-title" data-ar="مشروبات ساخنة" data-en="Hot Drinks">مشروبات ساخنة</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="soft_drinks">
+                        <span class="nav-icon">🥤</span>
+                        <div class="nav-title" data-ar="مشروبات غازية" data-en="Soft Drinks">مشروبات غازية</div>
+                    </div>
+                    <div class="mobile-nav-item" data-category="desserts">
+                        <span class="nav-icon">🍰</span>
+                        <div class="nav-title" data-ar="حلويات" data-en="Desserts">حلويات</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desktop/Horizontal Mobile Navigation -->
+            <div class="nav-scroll-container">
+                <!-- Left Scroll Indicator -->
+                <div class="nav-scroll-indicator left" id="scroll-left">
+                    <button class="scroll-arrow" onclick="scrollNavigation('left')">‹</button>
+                </div>
+                
+                <!-- Right Scroll Indicator -->
+                <div class="nav-scroll-indicator right" id="scroll-right">
+                    <button class="scroll-arrow" onclick="scrollNavigation('right')">›</button>
+                </div>
+                
+                <div class="nav-grid" id="nav-grid">
+                <div class="nav-item active" data-category="soups">
+                    <span class="nav-icon">🍲</span>
+                    <div class="nav-title" data-ar="الشوربة" data-en="Soup">الشوربة</div>
+                </div>
+                <div class="nav-item" data-category="salads">
+                    <span class="nav-icon">🥗</span>
+                    <div class="nav-title" data-ar="السلطات" data-en="Salads">السلطات</div>
+                </div>
+                <div class="nav-item" data-category="pasta">
+                    <span class="nav-icon">🍝</span>
+                    <div class="nav-title" data-ar="المعكرونة" data-en="Pasta">المعكرونة</div>
+                </div>
+                <div class="nav-item" data-category="pizza">
+                    <span class="nav-icon">🍕</span>
+                    <div class="nav-title" data-ar="البيتزا" data-en="Pizza">البيتزا</div>
+                </div>
+                <div class="nav-item" data-category="sandwiches">
+                    <span class="nav-icon">🥪</span>
+                    <div class="nav-title" data-ar="السندويتشات" data-en="Sandwiches">السندويتشات</div>
+                </div>
+                <div class="nav-item" data-category="main_course">
+                    <span class="nav-icon">🍖</span>
+                    <div class="nav-title" data-ar="الأطباق الرئيسية" data-en="Main Dishes">الأطباق الرئيسية</div>
+                </div>
+                <div class="nav-item" data-category="fresh_beverages">
+                    <span class="nav-icon">🥤</span>
+                    <div class="nav-title" data-ar="مشروبات طازجة" data-en="Fresh Beverages">مشروبات طازجة</div>
+                </div>
+                <div class="nav-item" data-category="hot_drinks">
+                    <span class="nav-icon">☕</span>
+                    <div class="nav-title" data-ar="مشروبات ساخنة" data-en="Hot Drinks">مشروبات ساخنة</div>
+                </div>
+                <div class="nav-item" data-category="soft_drinks">
+                    <span class="nav-icon">🥤</span>
+                    <div class="nav-title" data-ar="مشروبات غازية" data-en="Soft Drinks">مشروبات غازية</div>
+                </div>
+                <div class="nav-item" data-category="desserts">
+                    <span class="nav-icon">🍰</span>
+                    <div class="nav-title" data-ar="حلويات" data-en="Desserts">حلويات</div>
+                </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Content -->
+        <main class="content">
+            <!-- Menu Sections will be generated by JavaScript -->
+        </main>
+    </div>
+
+    <script>
+        // Theme state
+        let currentTheme = 'light';
+
+        // Menu Data
+        const menuData = {
+            soups: {
+                name_ar: "الشوربة",
+                name_en: "Soup",
+                items: [
+                    { name_ar: "شوربة الدجاج بالكريمة", name_en: "Chicken Cream Soup", price: "95.00 جنيه", price_en: "95.00 EGP", badge: "popular" },
+                    { name_ar: "شوربة الطماطم", name_en: "Tomato Soup", price: "70.00 جنيه", price_en: "70.00 EGP" },
+                    { name_ar: "شوربة الشعرية", name_en: "Vermicelli Soup", price: "50.00 جنيه", price_en: "50.00 EGP" },
+                    { name_ar: "شوربة العدس المصرية", name_en: "Egyptian Lentil Soup", price: "60.00 جنيه", price_en: "60.00 EGP", badge: "new" }
+                ],
+                backgroundColors: ['var(--color-bg-1)', 'var(--color-bg-2)', 'var(--color-bg-3)', 'var(--color-bg-4)', 'var(--color-bg-5)']
+            },
+            salads: {
+                name_ar: "السلطات",
+                name_en: "Salads",
+                items: [
+                    { name_ar: "شرائح السالمون المدخن", name_en: "Smoked Salmon Slices", price: "260.00 جنيه", price_en: "260.00 EGP", badge: "popular" },
+                    { name_ar: "سلطة سيزر الكلاسيكية", name_en: "Classic Caesar Salad", price: "95.00 جنيه", price_en: "95.00 EGP" },
+                    { name_ar: "السلطة اليونانية", name_en: "Greek Salad", price: "95.00 جنيه", price_en: "95.00 EGP" },
+                    { name_ar: "السلطة الموسمية الطازجة", name_en: "Fresh Seasonal Salad", price: "65.00 جنيه", price_en: "65.00 EGP" }
+                ]
+            },
+            pasta: {
+                name_ar: "المعكرونة",
+                name_en: "Pasta",
+                items: [
+                    { name_ar: "صوص فواكه البحر بالكريمة", name_en: "Seafood Cream Sauce", desc_ar: "سباجيتي - بيني - فوسيلي مع اختيارك من الصوص", desc_en: "Spaghetti - Penne - Fusilli with your choice of sauce", price: "180.00 جنيه", price_en: "180.00 EGP", badge: "popular" },
+                    { name_ar: "صوص بولونيز (اللحم المفروم)", name_en: "Bolognese Sauce (Minced Meat)", price: "105.00 جنيه", price_en: "105.00 EGP" },
+                    { name_ar: "صلصة الطماطم", name_en: "Tomato Sauce", price: "80.00 جنيه", price_en: "80.00 EGP" },
+                    { name_ar: "صلصة الطماطم الحارة (الأرابياتا)", name_en: "Spicy Tomato Sauce (Arrabiata)", price: "80.00 جنيه", price_en: "80.00 EGP" },
+                    { name_ar: "صلصة عيش الغراب البيضاء", name_en: "White Mushroom Sauce", price: "105.00 جنيه", price_en: "105.00 EGP" }
+                ]
+            },
+            pizza: {
+                name_ar: "البيتزا",
+                name_en: "Pizza",
+                items: [
+                    { name_ar: "بيتزا سلامي", name_en: "Salami Pizza", price: "135.00 جنيه", price_en: "135.00 EGP" },
+                    { name_ar: "بيتزا الدجاج", name_en: "Chicken Pizza", price: "145.00 جنيه", price_en: "145.00 EGP" },
+                    { name_ar: "بيتزا عيش الغراب", name_en: "Mushroom Pizza", price: "125.00 جنيه", price_en: "125.00 EGP" },
+                    { name_ar: "بيتزا فواكه البحر", name_en: "Seafood Pizza (Frutti de Mare)", price: "250.00 جنيه", price_en: "250.00 EGP", badge: "popular" },
+                    { name_ar: "بيتزا مارجريتا", name_en: "Margherita Pizza", price: "120.00 جنيه", price_en: "120.00 EGP" },
+                    { name_ar: "بيتزا خضروات", name_en: "Vegetarian Pizza", price: "120.00 جنيه", price_en: "120.00 EGP" }
+                ]
+            },
+            sandwiches: {
+                name_ar: "السندويتشات",
+                name_en: "Sandwiches",
+                items: [
+                    { name_ar: "السالمون المدخن", name_en: "Smoked Salmon", price: "280.00 جنيه", price_en: "280.00 EGP", badge: "popular" },
+                    { name_ar: "شرائح اللحم البقري المتبلة", name_en: "Seasoned Beef Steak", price: "185.00 جنيه", price_en: "185.00 EGP" },
+                    { name_ar: "توليب بيف برجر", name_en: "Tolip Beef Burger", price: "160.00 جنيه", price_en: "160.00 EGP" },
+                    { name_ar: "جمبري بانية", name_en: "Breaded Shrimp", price: "195.00 جنيه", price_en: "195.00 EGP" },
+                    { name_ar: "كلوب ساندويتش", name_en: "Club Sandwiches", price: "155.00 جنيه", price_en: "155.00 EGP" },
+                    { name_ar: "دجاج بانية", name_en: "Breaded Chicken", price: "150.00 جنيه", price_en: "150.00 EGP" }
+                ]
+            },
+            main_course: {
+                name_ar: "الأطباق الرئيسية",
+                name_en: "Main Dishes",
+                items: [
+                    { name_ar: "تشكيلة من المشويات البحرية", name_en: "Mixed Seafood Grill", price: "585.00 جنيه", price_en: "585.00 EGP", badge: "popular" },
+                    { name_ar: "جمبري مشوي", name_en: "Grilled Shrimp", price: "550.00 جنيه", price_en: "550.00 EGP" },
+                    { name_ar: "سمك فيليه مشوي أو مقلي", name_en: "Grilled or Fried Fish Fillet", price: "350.00 جنيه", price_en: "350.00 EGP" },
+                    { name_ar: "تشكيلة من المشويات الشرقية", name_en: "Oriental Mix Grill", price: "515.00 جنيه", price_en: "515.00 EGP", badge: "popular" },
+                    { name_ar: "فيليه اللحم البقري المشوي", name_en: "Grilled Beef Fillet", price: "515.00 جنيه", price_en: "515.00 EGP" },
+                    { name_ar: "كفتة مشوية", name_en: "Grilled Kofta", price: "220.00 جنيه", price_en: "220.00 EGP" },
+                    { name_ar: "دجاج مشوي مع الروزماري", name_en: "Grilled Rosemary Chicken", price: "220.00 جنيه", price_en: "220.00 EGP" },
+                    { name_ar: "دجاج بانية", name_en: "Breaded Chicken", price: "210.00 جنيه", price_en: "210.00 EGP" },
+                    { name_ar: "شيش طاووق", name_en: "Chicken Shish Tawook", price: "200.00 جنيه", price_en: "200.00 EGP" }
+                ]
+            },
+            fresh_beverages: {
+                name_ar: "مشروبات طازجة",
+                name_en: "Fresh Beverages",
+                items: [
+                    { name_ar: "برتقال طازج", name_en: "Fresh Orange", price: "85.00 جنيه", price_en: "85.00 EGP" },
+                    { name_ar: "ليمون طازج", name_en: "Fresh Lemon", price: "85.00 جنيه", price_en: "85.00 EGP" },
+                    { name_ar: "مانجو طازجة", name_en: "Fresh Mango", price: "85.00 جنيه", price_en: "85.00 EGP" },
+                    { name_ar: "جوافة طازجة", name_en: "Fresh Guava", price: "85.00 جنيه", price_en: "85.00 EGP" },
+                    { name_ar: "فلوريدا", name_en: "Florida", price: "85.00 جنيه", price_en: "85.00 EGP" },
+                    { name_ar: "كوكتيل جوافة ومانجو وبرتقال", name_en: "Guava, Mango, Orange Cocktail", price: "95.00 جنيه", price_en: "95.00 EGP", badge: "popular" },
+                    { name_ar: "صن شاين", name_en: "Sun Shine", price: "85.00 جنيه", price_en: "85.00 EGP" },
+                    { name_ar: "أورانج فيليب", name_en: "Orange Philip", price: "90.00 جنيه", price_en: "90.00 EGP" },
+                    { name_ar: "فيرجن بينا كولادا", name_en: "Virgin Pina Colada", price: "90.00 جنيه", price_en: "90.00 EGP" }
+                ]
+            },
+            hot_drinks: {
+                name_ar: "مشروبات ساخنة",
+                name_en: "Hot Drinks",
+                items: [
+                    { name_ar: "شاي أسود", name_en: "Black Tea", price: "40.00 جنيه", price_en: "40.00 EGP" },
+                    { name_ar: "شاي أخضر", name_en: "Green Tea", price: "40.00 جنيه", price_en: "40.00 EGP" },
+                    { name_ar: "ينسون", name_en: "Anise", price: "40.00 جنيه", price_en: "40.00 EGP" },
+                    { name_ar: "نعناع", name_en: "Mint", price: "40.00 جنيه", price_en: "40.00 EGP" },
+                    { name_ar: "بابونج", name_en: "Chamomile", price: "40.00 جنيه", price_en: "40.00 EGP" },
+                    { name_ar: "قهوة تركية", name_en: "Turkish Coffee", price: "80.00 جنيه", price_en: "80.00 EGP" },
+                    { name_ar: "قهوة فرنسية", name_en: "French Coffee", price: "105.00 جنيه", price_en: "105.00 EGP" },
+                    { name_ar: "إسبريسو", name_en: "Espresso", price: "80.00 جنيه", price_en: "80.00 EGP" },
+                    { name_ar: "قهوة أمريكية", name_en: "American Coffee", price: "80.00 جنيه", price_en: "80.00 EGP" },
+                    { name_ar: "كابتشينو", name_en: "Cappuccino", price: "105.00 جنيه", price_en: "105.00 EGP" },
+                    { name_ar: "إسبريسو لاتيه", name_en: "Espresso Latte", price: "105.00 جنيه", price_en: "105.00 EGP" },
+                    { name_ar: "إسبريسو ماكياتو", name_en: "Espresso Macchiato", price: "80.00 جنيه", price_en: "80.00 EGP" }
+                ]
+            },
+            soft_drinks: {
+                name_ar: "مشروبات غازية",
+                name_en: "Soft Drinks",
+                items: [
+                    { name_ar: "مياه معدنية صغيرة", name_en: "Small Mineral Water", price: "25.00 جنيه", price_en: "25.00 EGP" },
+                    { name_ar: "كوكاكولا، سبرايت، فانتا", name_en: "Coca-Cola, Sprite, Fanta", price: "50.00 جنيه", price_en: "50.00 EGP" },
+                    { name_ar: "ريد بول", name_en: "Red Bull", price: "85.00 جنيه", price_en: "85.00 EGP" },
+                    { name_ar: "بيريل فيروز", name_en: "Beryl Fairuz", price: "85.00 جنيه", price_en: "85.00 EGP" },
+                    { name_ar: "مياه فوارة", name_en: "Sparkling Water", price: "65.00 جنيه", price_en: "65.00 EGP" }
+                ]
+            },
+            desserts: {
+                name_ar: "حلويات",
+                name_en: "Desserts",
+                items: [
+                    { name_ar: "سلطة فواكه", name_en: "Fruit Salad", price: "110.00 جنيه", price_en: "110.00 EGP" },
+                    { name_ar: "كيك الجبنة", name_en: "Cheese Cake", price: "110.00 جنيه", price_en: "110.00 EGP", badge: "popular" },
+                    { name_ar: "براونيز الشوكولاتة", name_en: "Chocolate Brownies", price: "110.00 جنيه", price_en: "110.00 EGP" },
+                    { name_ar: "تشكيلة الحلويات الشرقية", name_en: "Oriental Sweets", price: "90.00 جنيه", price_en: "90.00 EGP" }
+                ]
+            }
+        };
+
+        // Language state
+        let currentLanguage = 'ar';
+
+        // Category icons mapping
+        const categoryIcons = {
+            soups: '🍲',
+            salads: '🥗',
+            pasta: '🍝',
+            pizza: '🍕',
+            sandwiches: '🥪',
+            main_course: '🍖',
+            fresh_beverages: '🥤',
+            hot_drinks: '☕',
+            soft_drinks: '🥤',
+            desserts: '🍰'
+        };
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTheme();
+            generateMenuSections();
+            showCategory('soups');
+            updateScrollProgress();
+            setupEventListeners();
+        });
+
+        // Theme Functions
+        function initializeTheme() {
+            // Check for saved theme preference or default to 'light'
+            const savedTheme = getSavedTheme() || 'light';
+            setTheme(savedTheme);
+        }
+
+        function getSavedTheme() {
+            // Since localStorage is blocked, we'll use a global variable
+            return window.savedTheme || 'light';
+        }
+
+        function saveTheme(theme) {
+            window.savedTheme = theme;
+        }
+
+        function toggleTheme() {
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        }
+
+        function setTheme(theme) {
+            currentTheme = theme;
+            document.documentElement.setAttribute('data-theme', theme);
+            document.body.setAttribute('data-theme', theme);
+            saveTheme(theme);
+            
+            // Update theme-dependent styles
+            updateThemeColors();
+        }
+
+        function updateThemeColors() {
+            const items = document.querySelectorAll('.item-image');
+            const backgrounds = ['var(--color-bg-1)', 'var(--color-bg-2)', 'var(--color-bg-3)', 'var(--color-bg-4)', 'var(--color-bg-5)', 'var(--color-bg-6)', 'var(--color-bg-7)', 'var(--color-bg-8)'];
+            
+            items.forEach((item, index) => {
+                item.style.backgroundColor = backgrounds[index % backgrounds.length];
+            });
+        }
+
+        // Generate menu sections
+        function generateMenuSections() {
+            const content = document.querySelector('.content');
+            
+            Object.keys(menuData).forEach(categoryKey => {
+                const category = menuData[categoryKey];
+                const section = document.createElement('section');
+                section.className = 'menu-section';
+                section.id = categoryKey;
+                
+                const title = document.createElement('h2');
+                title.className = 'section-title';
+                title.textContent = currentLanguage === 'ar' ? category.name_ar : category.name_en;
+                title.setAttribute('data-ar', category.name_ar);
+                title.setAttribute('data-en', category.name_en);
+                
+                const grid = document.createElement('div');
+                grid.className = 'items-grid';
+                
+                category.items.forEach(item => {
+                    const itemDiv = createMenuItem(item);
+                    grid.appendChild(itemDiv);
+                });
+                
+                section.appendChild(title);
+                section.appendChild(grid);
+                content.appendChild(section);
+            });
+        }
+
+        // Create menu item
+        function createMenuItem(item) {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'menu-item';
+            
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'item-image';
+            imageDiv.textContent = '🍽️';
+            
+            // Set random background color
+            const backgrounds = ['var(--color-bg-1)', 'var(--color-bg-2)', 'var(--color-bg-3)', 'var(--color-bg-4)', 'var(--color-bg-5)', 'var(--color-bg-6)', 'var(--color-bg-7)', 'var(--color-bg-8)'];
+            imageDiv.style.backgroundColor = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'item-content';
+            
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'item-name';
+            nameDiv.textContent = currentLanguage === 'ar' ? item.name_ar : item.name_en;
+            nameDiv.setAttribute('data-ar', item.name_ar);
+            nameDiv.setAttribute('data-en', item.name_en);
+            
+            const priceDiv = document.createElement('div');
+            priceDiv.className = 'item-price';
+            priceDiv.textContent = currentLanguage === 'ar' ? item.price : item.price_en;
+            priceDiv.setAttribute('data-ar', item.price);
+            priceDiv.setAttribute('data-en', item.price_en);
+            
+            contentDiv.appendChild(nameDiv);
+            
+            if (item.desc_ar || item.desc_en) {
+                const descDiv = document.createElement('div');
+                descDiv.className = 'item-description';
+                descDiv.textContent = currentLanguage === 'ar' ? item.desc_ar : item.desc_en;
+                descDiv.setAttribute('data-ar', item.desc_ar || '');
+                descDiv.setAttribute('data-en', item.desc_en || '');
+                contentDiv.appendChild(descDiv);
+            }
+            
+            contentDiv.appendChild(priceDiv);
+            
+            itemDiv.appendChild(imageDiv);
+            itemDiv.appendChild(contentDiv);
+            
+            if (item.badge) {
+                const badge = document.createElement('div');
+                badge.className = `badge ${item.badge}`;
+                badge.textContent = currentLanguage === 'ar' ? 
+                    (item.badge === 'popular' ? 'الأكثر طلباً' : 'جديد') :
+                    (item.badge === 'popular' ? 'Popular' : 'New');
+                badge.setAttribute('data-ar', item.badge === 'popular' ? 'الأكثر طلباً' : 'جديد');
+                badge.setAttribute('data-en', item.badge === 'popular' ? 'Popular' : 'New');
+                itemDiv.appendChild(badge);
+            }
+            
+            return itemDiv;
+        }
+
+        // Navigation state
+        let isMobileNavOpen = false;
+        let navMode = 'dropdown'; // 'dropdown' or 'horizontal'
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Desktop navigation items
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const category = item.getAttribute('data-category');
+                    showCategory(category);
+                    updateActiveNav(category);
+                });
+            });
+
+            // Mobile navigation items
+            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            mobileNavItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const category = item.getAttribute('data-category');
+                    showCategory(category);
+                    updateActiveNav(category);
+                    
+                    // Update selected category text
+                    const selectedText = currentLanguage === 'ar' ? 
+                        item.querySelector('.nav-title').getAttribute('data-ar') : 
+                        item.querySelector('.nav-title').getAttribute('data-en');
+                    document.getElementById('selected-category').textContent = selectedText;
+                    
+                    // Close mobile dropdown
+                    closeMobileNav();
+                });
+            });
+
+            // Scroll progress and nav indicators
+            window.addEventListener('scroll', updateScrollProgress);
+            
+            // Navigation scroll detection
+            const navGrid = document.getElementById('nav-grid');
+            if (navGrid) {
+                navGrid.addEventListener('scroll', updateScrollIndicators);
+                // Initial update
+                setTimeout(updateScrollIndicators, 100);
+            }
+
+            // Close mobile nav when clicking outside
+            document.addEventListener('click', (e) => {
+                const navContainer = document.querySelector('.nav-container');
+                if (isMobileNavOpen && !navContainer.contains(e.target)) {
+                    closeMobileNav();
+                }
+            });
+
+            // Initialize navigation mode for mobile
+            if (window.innerWidth <= 768) {
+                initializeMobileNav();
+            }
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 768) {
+                    initializeMobileNav();
+                } else {
+                    // Reset to desktop mode
+                    document.querySelector('.nav-container').classList.remove('horizontal-mode');
+                    closeMobileNav();
+                }
+                updateScrollIndicators();
+            });
+        }
+
+        // Initialize mobile navigation
+        function initializeMobileNav() {
+            // Set initial mode based on screen size
+            const container = document.querySelector('.nav-container');
+            if (window.innerWidth <= 480) {
+                navMode = 'dropdown';
+                container.classList.remove('horizontal-mode');
+            }
+            updateScrollIndicators();
+        }
+
+        // Toggle mobile navigation dropdown
+        function toggleMobileNav() {
+            const dropdown = document.getElementById('mobile-dropdown');
+            const toggle = document.querySelector('.mobile-nav-toggle');
+            
+            if (isMobileNavOpen) {
+                closeMobileNav();
+            } else {
+                dropdown.classList.add('show');
+                toggle.classList.add('active');
+                isMobileNavOpen = true;
+            }
+        }
+
+        // Close mobile navigation
+        function closeMobileNav() {
+            const dropdown = document.getElementById('mobile-dropdown');
+            const toggle = document.querySelector('.mobile-nav-toggle');
+            
+            dropdown.classList.remove('show');
+            toggle.classList.remove('active');
+            isMobileNavOpen = false;
+        }
+
+        // Toggle navigation mode (mobile only)
+        function toggleNavMode() {
+            const container = document.querySelector('.nav-container');
+            
+            if (navMode === 'dropdown') {
+                navMode = 'horizontal';
+                container.classList.add('horizontal-mode');
+                closeMobileNav();
+            } else {
+                navMode = 'dropdown';
+                container.classList.remove('horizontal-mode');
+            }
+            
+            setTimeout(updateScrollIndicators, 100);
+        }
+
+        // Update active navigation state
+        function updateActiveNav(category) {
+            // Update desktop nav
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(nav => nav.classList.remove('active'));
+            const activeDesktop = document.querySelector(`.nav-item[data-category="${category}"]`);
+            if (activeDesktop) activeDesktop.classList.add('active');
+            
+            // Update mobile nav
+            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            mobileNavItems.forEach(nav => nav.classList.remove('active'));
+            const activeMobile = document.querySelector(`.mobile-nav-item[data-category="${category}"]`);
+            if (activeMobile) activeMobile.classList.add('active');
+        }
+
+        // Scroll navigation horizontally
+        function scrollNavigation(direction) {
+            const navGrid = document.getElementById('nav-grid');
+            const scrollAmount = 200;
+            
+            if (direction === 'left') {
+                navGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                navGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // Update scroll indicators
+        function updateScrollIndicators() {
+            const navGrid = document.getElementById('nav-grid');
+            const leftIndicator = document.getElementById('scroll-left');
+            const rightIndicator = document.getElementById('scroll-right');
+            
+            if (!navGrid || !leftIndicator || !rightIndicator) return;
+            
+            const { scrollLeft, scrollWidth, clientWidth } = navGrid;
+            
+            // Show/hide left indicator
+            if (scrollLeft > 10) {
+                leftIndicator.style.opacity = '1';
+            } else {
+                leftIndicator.style.opacity = '0';
+            }
+            
+            // Show/hide right indicator
+            if (scrollLeft < scrollWidth - clientWidth - 10) {
+                rightIndicator.style.opacity = '1';
+            } else {
+                rightIndicator.style.opacity = '0';
+            }
+        }
+
+        // Show category
+        function showCategory(categoryKey) {
+            const sections = document.querySelectorAll('.menu-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const targetSection = document.getElementById(categoryKey);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        }
+
+        // Toggle language
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+            
+            // Update document direction
+            document.documentElement.setAttribute('dir', currentLanguage === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', currentLanguage);
+            
+            // Update language button
+            document.getElementById('lang-text').textContent = currentLanguage === 'ar' ? 'EN' : 'ع';
+            
+            // Update restaurant title and welcome text
+            document.getElementById('restaurant-title').textContent = 
+                currentLanguage === 'ar' ? 'مطعم توليب' : 'Tolip Restaurant';
+            document.getElementById('welcome-text').textContent = 
+                currentLanguage === 'ar' ? 'مرحباً بكم في منيو مطعم توليب' : 'Welcome to Tolip Restaurant Menu';
+            
+            // Update all elements with data attributes
+            const elementsWithLang = document.querySelectorAll('[data-ar][data-en]');
+            elementsWithLang.forEach(element => {
+                const text = currentLanguage === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            // Update selected category in mobile dropdown
+            const activeCategory = document.querySelector('.mobile-nav-item.active');
+            if (activeCategory) {
+                const selectedText = currentLanguage === 'ar' ? 
+                    activeCategory.querySelector('.nav-title').getAttribute('data-ar') : 
+                    activeCategory.querySelector('.nav-title').getAttribute('data-en');
+                document.getElementById('selected-category').textContent = selectedText;
+            }
+            
+            // Update navigation mode toggle tooltip
+            const navModeToggle = document.querySelector('.nav-mode-toggle');
+            if (navModeToggle) {
+                navModeToggle.title = currentLanguage === 'ar' ? 'تبديل وضع التنقل' : 'Toggle Navigation Mode';
+            }
+        }
+
+        // Update scroll progress
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            
+            document.querySelector('.scroll-progress').style.width = scrollProgress + '%';
+        }
+
+        // Add ripple effect to clickable elements
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const circle = document.createElement('span');
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+            
+            circle.style.width = circle.style.height = diameter + 'px';
+            circle.style.left = (event.clientX - button.offsetLeft - radius) + 'px';
+            circle.style.top = (event.clientY - button.offsetTop - radius) + 'px';
+            circle.classList.add('ripple');
+            
+            const ripple = button.getElementsByClassName('ripple')[0];
+            if (ripple) {
+                ripple.remove();
+            }
+            
+            button.appendChild(circle);
+        }
+
+        // Add ripple styles
+        const rippleStyles = `
+            .nav-item, .menu-item, .lang-btn {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = rippleStyles;
+        document.head.appendChild(styleSheet);
+
+        // Add ripple effects
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.nav-item') || e.target.closest('.menu-item') || e.target.closest('.lang-btn')) {
+                createRipple(e);
+            }
+        });
+    </script>
+</body>
+</html>
