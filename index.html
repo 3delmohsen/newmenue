@@ -3,288 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مطعم توليب - Tolip Restaurant</title>
-    <link rel="icon" href="Picture111.png" type="image/png">
+    <title>ركيب - حلول متكاملة للأمان والاتصالات والبنية التحتية</title>
+    
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        /* Design System CSS */
+        /* ==================== CSS Variables and Base Settings ==================== */
         :root {
-          /* Primitive Color Tokens */
-          --color-white: rgba(255, 255, 255, 1);
-          --color-black: rgba(0, 0, 0, 1);
-          --color-cream-50: rgba(252, 252, 249, 1);
-          --color-cream-100: rgba(255, 255, 253, 1);
-          --color-gray-200: rgba(245, 245, 245, 1);
-          --color-gray-300: rgba(167, 169, 169, 1);
-          --color-gray-400: rgba(119, 124, 124, 1);
-          --color-slate-500: rgba(98, 108, 113, 1);
-          --color-brown-600: rgba(94, 82, 64, 1);
-          --color-charcoal-700: rgba(31, 33, 33, 1);
-          --color-charcoal-800: rgba(38, 40, 40, 1);
-          --color-slate-900: rgba(19, 52, 59, 1);
-          --color-teal-300: rgba(50, 184, 198, 1);
-          --color-teal-400: rgba(45, 166, 178, 1);
-          --color-teal-500: rgba(33, 128, 141, 1);
-          --color-teal-600: rgba(29, 116, 128, 1);
-          --color-teal-700: rgba(26, 104, 115, 1);
-          --color-teal-800: rgba(41, 150, 161, 1);
-          --color-red-400: rgba(255, 84, 89, 1);
-          --color-red-500: rgba(192, 21, 47, 1);
-          --color-orange-400: rgba(230, 129, 97, 1);
-          --color-orange-500: rgba(168, 75, 47, 1);
-
-          /* RGB versions for opacity control */
-          --color-brown-600-rgb: 94, 82, 64;
-          --color-teal-500-rgb: 33, 128, 141;
-          --color-slate-900-rgb: 19, 52, 59;
-          --color-slate-500-rgb: 98, 108, 113;
-          --color-red-500-rgb: 192, 21, 47;
-          --color-red-400-rgb: 255, 84, 89;
-          --color-orange-500-rgb: 168, 75, 47;
-          --color-orange-400-rgb: 230, 129, 97;
-
-          /* Background color tokens (Light Mode) */
-          --color-bg-1: rgba(59, 130, 246, 0.08);
-          --color-bg-2: rgba(245, 158, 11, 0.08);
-          --color-bg-3: rgba(34, 197, 94, 0.08);
-          --color-bg-4: rgba(239, 68, 68, 0.08);
-          --color-bg-5: rgba(147, 51, 234, 0.08);
-          --color-bg-6: rgba(249, 115, 22, 0.08);
-          --color-bg-7: rgba(236, 72, 153, 0.08);
-          --color-bg-8: rgba(6, 182, 212, 0.08);
-
-          /* Semantic Color Tokens (Light Mode) */
-          --color-background: var(--color-cream-50);
-          --color-surface: var(--color-cream-100);
-          --color-text: var(--color-slate-900);
-          --color-text-secondary: var(--color-slate-500);
-          --color-primary: var(--color-teal-500);
-          --color-primary-hover: var(--color-teal-600);
-          --color-primary-active: var(--color-teal-700);
-          --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
-          --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
-          --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
-          --color-border: rgba(var(--color-brown-600-rgb), 0.2);
-          --color-btn-primary-text: var(--color-cream-50);
-          --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
-          --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
-          --color-error: var(--color-red-500);
-          --color-success: var(--color-teal-500);
-          --color-warning: var(--color-orange-500);
-          --color-info: var(--color-slate-500);
-          --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
-          --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
-
-          /* Common style patterns */
-          --focus-ring: 0 0 0 3px var(--color-focus-ring);
-          --focus-outline: 2px solid var(--color-primary);
-          --status-bg-opacity: 0.15;
-          --status-border-opacity: 0.25;
-
-          /* RGB versions for opacity control */
-          --color-success-rgb: 33, 128, 141;
-          --color-error-rgb: 192, 21, 47;
-          --color-warning-rgb: 168, 75, 47;
-          --color-info-rgb: 98, 108, 113;
-
-          /* Typography */
-          --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-          --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
-            Monaco, Consolas, monospace;
-          --font-size-xs: 11px;
-          --font-size-sm: 12px;
-          --font-size-base: 14px;
-          --font-size-md: 14px;
-          --font-size-lg: 16px;
-          --font-size-xl: 18px;
-          --font-size-2xl: 20px;
-          --font-size-3xl: 24px;
-          --font-size-4xl: 30px;
-          --font-weight-normal: 400;
-          --font-weight-medium: 500;
-          --font-weight-semibold: 550;
-          --font-weight-bold: 600;
-          --line-height-tight: 1.2;
-          --line-height-normal: 1.5;
-          --letter-spacing-tight: -0.01em;
-
-          /* Spacing */
-          --space-0: 0;
-          --space-1: 1px;
-          --space-2: 2px;
-          --space-4: 4px;
-          --space-6: 6px;
-          --space-8: 8px;
-          --space-10: 10px;
-          --space-12: 12px;
-          --space-16: 16px;
-          --space-20: 20px;
-          --space-24: 24px;
-          --space-32: 32px;
-
-          /* Border Radius */
-          --radius-sm: 6px;
-          --radius-base: 8px;
-          --radius-md: 10px;
-          --radius-lg: 12px;
-          --radius-full: 9999px;
-
-          /* Shadows */
-          --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
-          --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-          --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
-            0 2px 4px -1px rgba(0, 0, 0, 0.02);
-          --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
-            0 4px 6px -2px rgba(0, 0, 0, 0.02);
-          --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.03);
-
-          /* Animation */
-          --duration-fast: 150ms;
-          --duration-normal: 250ms;
-          --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
-
-          /* Layout */
-          --container-sm: 640px;
-          --container-md: 768px;
-          --container-lg: 1024px;
-          --container-xl: 1280px;
+            --primary-color: #0b3d91;
+            --secondary-color: #10b981;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --gradient-primary: linear-gradient(135deg, #0b3d91 0%, #1e5ba8 100%);
+            --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Manual theme override takes precedence */
-        [data-theme="dark"] {
-          --color-gray-400-rgb: 119, 124, 124;
-          --color-teal-300-rgb: 50, 184, 198;
-          --color-gray-300-rgb: 167, 169, 169;
-          --color-gray-200-rgb: 245, 245, 245;
-
-          --color-bg-1: rgba(29, 78, 216, 0.2);
-          --color-bg-2: rgba(180, 83, 9, 0.2);
-          --color-bg-3: rgba(21, 128, 61, 0.2);
-          --color-bg-4: rgba(185, 28, 28, 0.2);
-          --color-bg-5: rgba(107, 33, 168, 0.2);
-          --color-bg-6: rgba(194, 65, 12, 0.2);
-          --color-bg-7: rgba(190, 24, 93, 0.2);
-          --color-bg-8: rgba(8, 145, 178, 0.2);
-
-          --color-background: #1a1a1a;
-          --color-surface: #2d2d2d;
-          --color-text: #ffffff;
-          --color-text-secondary: rgba(224, 224, 224, 0.8);
-          --color-primary: var(--color-teal-300);
-          --color-primary-hover: var(--color-teal-400);
-          --color-primary-active: var(--color-teal-800);
-          --color-secondary: rgba(var(--color-gray-400-rgb), 0.2);
-          --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.3);
-          --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.4);
-          --color-border: rgba(var(--color-gray-400-rgb), 0.3);
-          --color-error: var(--color-red-400);
-          --color-success: var(--color-teal-300);
-          --color-warning: var(--color-orange-400);
-          --color-info: var(--color-gray-300);
-          --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
-          --color-btn-primary-text: var(--color-slate-900);
-          --color-card-border: rgba(var(--color-gray-400-rgb), 0.25);
-          --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.2);
-          --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-          --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
-
-          --color-success-rgb: var(--color-teal-300-rgb);
-          --color-error-rgb: var(--color-red-400-rgb);
-          --color-warning-rgb: var(--color-orange-400-rgb);
-          --color-info-rgb: var(--color-gray-300-rgb);
-        }
-
-        /* Auto dark mode (only when no manual theme is set) */
-        @media (prefers-color-scheme: dark) {
-          :root:not([data-theme]) {
-          :root {
-            --color-gray-400-rgb: 119, 124, 124;
-            --color-teal-300-rgb: 50, 184, 198;
-            --color-gray-300-rgb: 167, 169, 169;
-            --color-gray-200-rgb: 245, 245, 245;
-
-            --color-bg-1: rgba(29, 78, 216, 0.15);
-            --color-bg-2: rgba(180, 83, 9, 0.15);
-            --color-bg-3: rgba(21, 128, 61, 0.15);
-            --color-bg-4: rgba(185, 28, 28, 0.15);
-            --color-bg-5: rgba(107, 33, 168, 0.15);
-            --color-bg-6: rgba(194, 65, 12, 0.15);
-            --color-bg-7: rgba(190, 24, 93, 0.15);
-            --color-bg-8: rgba(8, 145, 178, 0.15);
-
-            --color-background: var(--color-charcoal-700);
-            --color-surface: var(--color-charcoal-800);
-            --color-text: var(--color-gray-200);
-            --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
-            --color-primary: var(--color-teal-300);
-            --color-primary-hover: var(--color-teal-400);
-            --color-primary-active: var(--color-teal-800);
-            --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
-            --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
-            --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
-            --color-border: rgba(var(--color-gray-400-rgb), 0.3);
-            --color-error: var(--color-red-400);
-            --color-success: var(--color-teal-300);
-            --color-warning: var(--color-orange-400);
-            --color-info: var(--color-gray-300);
-            --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
-            --color-btn-primary-text: var(--color-slate-900);
-            --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
-            --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
-            --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
-              inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-            --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
-
-            --color-success-rgb: var(--color-teal-300-rgb);
-            --color-error-rgb: var(--color-red-400-rgb);
-            --color-warning-rgb: var(--color-orange-400-rgb);
-            --color-info-rgb: var(--color-gray-300-rgb);
-          }
-        }
-
-        /* Light theme explicit override */
-        [data-theme="light"] {
-          --color-background: var(--color-cream-50);
-          --color-surface: var(--color-cream-100);
-          --color-text: var(--color-slate-900);
-          --color-text-secondary: var(--color-slate-500);
-          --color-primary: var(--color-teal-500);
-          --color-primary-hover: var(--color-teal-600);
-          --color-primary-active: var(--color-teal-700);
-          --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
-          --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
-          --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
-          --color-border: rgba(var(--color-brown-600-rgb), 0.2);
-          --color-btn-primary-text: var(--color-cream-50);
-          --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
-          --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
-          --color-error: var(--color-red-500);
-          --color-success: var(--color-teal-500);
-          --color-warning: var(--color-orange-500);
-          --color-info: var(--color-slate-500);
-          --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
-          --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
-
-          --color-success-rgb: var(--color-teal-500-rgb);
-          --color-error-rgb: var(--color-red-500-rgb);
-          --color-warning-rgb: var(--color-orange-500-rgb);
-          --color-info-rgb: var(--color-slate-500-rgb);
-
-          /* Light mode background colors */
-          --color-bg-1: rgba(59, 130, 246, 0.08);
-          --color-bg-2: rgba(245, 158, 11, 0.08);
-          --color-bg-3: rgba(34, 197, 94, 0.08);
-          --color-bg-4: rgba(239, 68, 68, 0.08);
-          --color-bg-5: rgba(147, 51, 234, 0.08);
-          --color-bg-6: rgba(249, 115, 22, 0.08);
-          --color-bg-7: rgba(236, 72, 153, 0.08);
-          --color-bg-8: rgba(6, 182, 212, 0.08);
-        }
-        }
-
-        /* Modern Custom Styles */
         * {
             margin: 0;
             padding: 0;
@@ -292,512 +39,1054 @@
         }
 
         body {
-            font-family: var(--font-family-base);
-            background-color: var(--color-background);
-            color: var(--color-text);
-            min-height: 100vh;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            color: var(--text-color);
+            line-height: 1.8;
             overflow-x: hidden;
-            position: relative;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #ffffff;
         }
 
-        /* Animated Background Shapes */
-        .bg-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(45deg, 
-                rgba(50, 184, 198, 0.1),
-                rgba(33, 128, 141, 0.15));
-            animation: float 20s ease-in-out infinite;
+        /* ==================== Navigation Bar ==================== */
+        .navbar {
+            background: var(--gradient-primary) !important;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
         }
 
-        .shape:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: -10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 70%;
-            right: -5%;
-            animation-delay: -7s;
-        }
-
-        .shape:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            top: 40%;
-            left: 80%;
-            animation-delay: -14s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(30px, -30px) rotate(90deg); }
-            50% { transform: translate(-20px, 20px) rotate(180deg); }
-            75% { transform: translate(20px, -10px) rotate(270deg); }
-        }
-
-        /* Glass Container */
-        .glass-container {
-            background-color: var(--color-surface);
-            border: 1px solid var(--color-card-border);
-            border-radius: 24px;
+        .navbar.scrolled {
+            padding: 0.5rem 0;
             box-shadow: var(--shadow-lg);
-            position: relative;
-            z-index: 1;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, 
-                rgba(33, 128, 141, 0.9) 0%,
-                rgba(50, 184, 198, 0.8) 50%,
-                rgba(41, 150, 161, 0.9) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 2rem;
-            text-align: center;
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .navbar-logo {
+            height: 45px;
+            width: auto;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .navbar-brand:hover .navbar-logo {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        .brand-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Logo */
+        @media (max-width: 768px) {
+            .navbar-logo {
+                height: 38px;
+            }
+
+            .brand-text {
+                font-size: 1.1rem;
+            }
+
+            .navbar-brand {
+                gap: 0.5rem;
+            }
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.25rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white !important;
+        }
+
+        .btn-whatsapp {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+        /* ==================== Hero Section ==================== */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(11, 61, 145, 0.95) 0%, rgba(30, 91, 168, 0.9) 100%), 
+                        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"%3E%3Cdefs%3E%3Cpattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"%3E%3Cpath d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/%3E%3C/pattern%3E%3C/defs%3E%3Crect width="100%25" height="100%25" fill="url(%23grid)"/%3E%3C/svg%3E');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
             position: relative;
             overflow: hidden;
-            border-radius: 24px 24px 0 0;
-            box-shadow: 0 10px 30px rgba(33, 128, 141, 0.3);
         }
 
-        .header::before {
+        .hero-section::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, 
-                rgba(255, 255, 255, 0.1) 0%,
-                transparent 70%);
-            animation: shimmer 8s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        @keyframes shimmer {
-            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-            50% { transform: translate(-30%, -30%) rotate(180deg); }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 0 40px;
+            width: 60%;
         }
 
-        .logo-container {
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+            margin-top:50px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        /* ==================== Hero Slider ==================== */
+        .hero-slider {
+            position: relative;
+            z-index: 2;
+            width: 40%;
+            height: 350px;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-slide {
+            position: relative;
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: white;
+            width: 28px;
+            border-radius: 5px;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(16, 185, 129, 0.8);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, 
-                rgba(255, 255, 255, 0.9),
-                rgba(255, 255, 255, 0.7));
-            padding: 10px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            animation: logoFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.05); }
-        }
-
-        .restaurant-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--color-white);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
-                         0 0 20px rgba(255, 255, 255, 0.5);
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 2;
-            animation: titleGlow 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.5); }
-            100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.8); }
-        }
-
-        .welcome-text {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Header Controls */
-        .header-controls {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
+            transition: all 0.3s ease;
             z-index: 10;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
         }
 
-        .lang-btn {
-            background: linear-gradient(45deg, 
-                rgba(255, 255, 255, 0.2),
-                rgba(255, 255, 255, 0.1));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .slider-arrow:hover {
+            background: var(--secondary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-arrow.prev {
+            left: 10px;
+        }
+
+        .slider-arrow.next {
+            right: 10px;
+        }
+
+        .btn-hero {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
             border-radius: 50px;
-            padding: 0.75rem 1.5rem;
-            color: white;
-            font-weight: 600;
+            border: none;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-hero-primary {
+            background: var(--gradient-secondary);
+            color: white;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+            color: white;
+        }
+
+        .btn-hero-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: white;
+            transform: translateY(-3px);
+            color: white;
+        }
+
+
+        /* ==================== Services Slider in Hero ==================== */
+        .hero-services-slider {
             position: relative;
+            width: 100%;
+            height: 400px;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
             overflow: hidden;
         }
 
-        .lang-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .slider-wrapper {
+            position: relative;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent,
-                rgba(255, 255, 255, 0.4),
-                transparent);
-            transition: left 0.5s;
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 
-        .lang-btn:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        .slider-slide {
+            position: relative;
+            min-width: 100%;
+            height: 100%;
+            padding: 20px;
         }
 
-        .lang-btn:hover:before {
-            left: 100%;
+        /* Service Card in Slider */
+        .service-card-hero {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transform: scale(0.95);
+            opacity: 0.7;
         }
 
-        /* Theme Toggle Button */
-        .theme-btn {
-            background: linear-gradient(45deg, 
-                rgba(255, 255, 255, 0.25),
-                rgba(255, 255, 255, 0.15));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .slider-wrapper .slider-slide:nth-child(1) .service-card-hero {
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: 0 15px 50px rgba(11, 61, 145, 0.2);
+        }
+
+        .service-card-hero:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(11, 61, 145, 0.25);
+        }
+
+        .service-card-image {
+            position: relative;
+            width: 100%;
+            height: 55%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0b3d91 0%, #1e5ba8 100%);
+        }
+
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card-hero:hover .service-card-image img {
+            transform: scale(1.08);
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(11, 61, 145, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card-hero:hover .service-card-overlay {
+            opacity: 1;
+        }
+
+        .service-card-overlay i {
+            font-size: 3rem;
+            color: #10b981;
+        }
+
+        .service-card-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: right;
+        }
+
+        .service-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0b3d91;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .service-card-desc {
+            font-size: 0.95rem;
+            color: #6c757d;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Slider Navigation Buttons */
+        .slider-arrow-services {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(16, 185, 129, 0.9);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            z-index: 20;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .slider-arrow-services:hover {
+            background: #0b3d91;
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 6px 25px rgba(11, 61, 145, 0.4);
+        }
+
+        .slider-arrow-services.prev {
+            left: -25px;
+        }
+
+        .slider-arrow-services.next {
+            right: -25px;
+        }
+
+        /* Navigation Dots */
+        .slider-controls-services {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+        }
+
+        .slider-dot-services {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .slider-dot-services.active {
+            background: white;
+            transform: scale(1.3);
+            border-color: white;
+        }
+
+        .slider-dot-services:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive for Mobile */
+        @media (max-width: 992px) {
+            .hero-services-slider {
+                height: 350px;
+                margin-top: 30px;
+            }
+
+            .slider-slide {
+                padding: 15px;
+            }
+
+            .slider-arrow-services.prev {
+                left: 5px;
+            }
+
+            .slider-arrow-services.next {
+                right: 5px;
+            }
+
+            .service-card-title {
+                font-size: 1rem;
+            }
+
+            .service-card-desc {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-services-slider {
+                height: 300px;
+            }
+
+            .slider-arrow-services {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+        }
+
+                /* ==================== General Sections ==================== */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        /* ==================== Services Section ==================== */
+        #services {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        .service-image-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-icon-overlay {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-primary);
             width: 50px;
             height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-body {
+            padding: 1.75rem;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 0.5rem;
         }
 
-        .theme-btn:hover {
-            transform: translateY(-2px) scale(1.1);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        .service-description {
+            color: #666;
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
         }
 
-        .theme-icon {
-            position: absolute;
-            font-size: 1.2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .service-features {
+            list-style: none;
+            padding: 0;
         }
 
-        .sun-icon {
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-
-        .moon-icon {
-            opacity: 0;
-            transform: rotate(180deg) scale(0.5);
-        }
-
-        [data-theme="dark"] .sun-icon {
-            opacity: 0;
-            transform: rotate(-180deg) scale(0.5);
-        }
-
-        [data-theme="dark"] .moon-icon {
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-
-        /* Navigation */
-        .nav-container {
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 5;
-            background-color: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            box-shadow: var(--shadow-sm);
-            position: relative;
-        }
-
-        .nav-wrapper {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Mobile Navigation Dropdown */
-        .mobile-nav-toggle {
-            display: none;
-            background: var(--color-primary);
-            color: var(--color-btn-primary-text);
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--radius-base);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .mobile-nav-toggle:hover {
-            background: var(--color-primary-hover);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .dropdown-arrow {
-            transition: transform 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .mobile-nav-toggle.active .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        .mobile-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-base);
-            box-shadow: var(--shadow-lg);
-            z-index: 20;
-            max-height: 60vh;
-            overflow-y: auto;
-            margin-top: 0.5rem;
-        }
-
-        .mobile-dropdown.show {
-            display: block;
-            animation: dropdownShow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes dropdownShow {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mobile-nav-item {
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #555;
             display: flex;
             align-items: center;
-            padding: 1rem;
-            border-bottom: 1px solid var(--color-border);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
-        .mobile-nav-item:last-child {
-            border-bottom: none;
+        .service-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--secondary-color);
         }
 
-        .mobile-nav-item:hover {
-            background: var(--color-secondary-hover);
+        /* ==================== Features Section ==================== */
+        #features {
+            background: var(--gradient-primary);
+            color: white;
         }
 
-        .mobile-nav-item.active {
-            background: var(--color-primary);
-            color: var(--color-btn-primary-text);
+        #features .section-title {
+            color: white;
         }
 
-        .mobile-nav-item .nav-icon {
-            font-size: 1.25rem;
-            flex-shrink: 0;
+        #features .section-title::after {
+            background: var(--gradient-secondary);
         }
 
-        .mobile-nav-item .nav-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* Desktop Navigation with Scroll Improvements */
-        .nav-scroll-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-grid {
-            display: flex;
-            gap: 0.75rem;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            padding: 0 2rem;
-        }
-
-        .nav-grid::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Scroll Indicators */
-        .nav-scroll-indicator {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 2rem;
-            pointer-events: none;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-scroll-indicator.left {
-            left: 0;
-            background: linear-gradient(to right, var(--color-surface), transparent);
-        }
-
-        .nav-scroll-indicator.right {
-            right: 0;
-            background: linear-gradient(to left, var(--color-surface), transparent);
-        }
-
-        .scroll-arrow {
-            background: var(--color-primary);
-            color: var(--color-btn-primary-text);
-            border: none;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-            font-size: 0.8rem;
-        }
-
-        .scroll-arrow:hover {
-            background: var(--color-primary-hover);
-            transform: scale(1.1);
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav-item {
-            background-color: var(--color-secondary);
-            border: 1px solid var(--color-border);
-            border-radius: 16px;
-            padding: 1rem 1.25rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+        .feature-box {
             text-align: center;
-            box-shadow: var(--shadow-xs);
-            min-width: 140px;
-            flex-shrink: 0;
-            scroll-snap-align: start;
-            touch-action: manipulation;
-        }
-
-        .nav-item:hover {
-            background-color: var(--color-secondary-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav-item.active {
-            background-color: var(--color-primary);
-            color: var(--color-btn-primary-text);
-            border-color: var(--color-primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav-item.active .nav-title {
-            color: var(--color-btn-primary-text);
-        }
-
-        .nav-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-            display: block;
-        }
-
-        .nav-title {
-            font-weight: 600;
-            color: var(--color-text);
-            font-size: 0.875rem;
-            line-height: 1.2;
-        }
-
-        /* Content Area */
-        .content {
             padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .menu-section {
-            display: none;
-            animation: fadeInUp 0.6s ease-out;
+        .feature-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
         }
 
-        .menu-section.active {
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            display: inline-block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        /* ==================== Portfolio Section ==================== */
+        #portfolio {
+            background: #f8f9fa;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.75rem;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.08);
+        }
+
+        .project-image-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .btn-view-project {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-view-project:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* ==================== Project Modals ==================== */
+        .modal-content {
+            border-radius: 16px;
+            border: none;
+        }
+
+        .modal-header {
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 16px 16px 0 0;
+            padding: 1.5rem;
+        }
+
+        .modal-title {
+            font-weight: 700;
+        }
+
+        .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-project-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ==================== Testimonials Section ==================== */
+        #testimonials {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            color: rgba(11, 61, 145, 0.1);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-position {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            font-size: 1.2rem;
+        }
+
+        /* ==================== Contact Section ==================== */
+        #contact {
+            background: #ffffff;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.15);
+        }
+
+        .btn-submit {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info {
+            background: var(--gradient-primary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            color: white;
+            height: 100%;
+        }
+
+        .contact-info h3 {
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text strong {
             display: block;
+            margin-bottom: 0.25rem;
         }
 
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* ==================== Footer ==================== */
+        footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-text {
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            transform: translateX(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ==================== Animations ==================== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -809,1134 +1098,1296 @@
             }
         }
 
-        .section-title {
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        
+        /* ==================== Contact Cards in Contact Section ==================== */
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
             text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--color-text);
-            position: relative;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            padding: 1rem 0;
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
 
-        @media (min-width: 640px) {
-            .items-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .items-grid {
-                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            }
-        }
-
-        /* Menu Item Cards with Enhanced Image Styling */
-        .menu-item {
-            background-color: var(--color-surface);
-            border: 1px solid var(--color-card-border);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            cursor: pointer;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .menu-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border-color: var(--color-primary);
-        }
-
-        .menu-item:hover .item-image {
-            transform: scale(1.05);
-        }
-
-        .menu-item:hover .item-image::before {
-            opacity: 0.1;
-        }
-
-        .item-image {
-            width: 100%;
-            height: 200px;
-            position: relative;
+        .contact-card-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
         }
 
-        .item-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
+        .contact-card:hover .contact-card-icon {
+            transform: scale(1.15) rotateZ(10deg);
         }
 
-        .item-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                rgba(255, 255, 255, 0.1) 0%,
-                transparent 50%,
-                rgba(255, 255, 255, 0.1) 100%);
-            opacity: 0;
-            transform: translateX(-100%);
-            transition: transform 0.6s ease, opacity 0.3s ease;
-            z-index: 2;
-        }
-
-        .menu-item:hover .item-image::after {
-            opacity: 1;
-            transform: translateX(100%);
-        }
-
-        .item-emoji {
-            position: relative;
-            z-index: 3;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-            transition: transform 0.3s ease;
-        }
-
-        .menu-item:hover .item-emoji {
-            transform: scale(1.1);
-        }
-
-        .item-content {
-            position: relative;
-            z-index: 2;
-            padding: 1.5rem;
-            background: var(--color-surface);
-        }
-
-        .item-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .item-description {
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
+        .contact-card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
             margin-bottom: 1rem;
+        }
+
+        .contact-card-text {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card-text a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-card-text a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .contact-card-description {
+            display: block;
+            color: #888;
+            font-size: 0.9rem;
             line-height: 1.5;
         }
 
-        .item-price {
+        /* Working Hours Card */
+        .working-hours-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .working-hours-card h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .working-hours-card h4::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 30px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--light-color);
+            border-radius: 10px;
+            border-right: 4px solid var(--secondary-color);
+        }
+
+        .day {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .time {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        /* Social Media Card */
+        .social-media-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .social-media-card h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-media-card h4::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 30px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        .social-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .social-links-large {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-link-large {
+            flex: 1;
+            min-width: 100px;
+            padding: 1rem;
+            background: var(--light-color);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .social-link-large:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+        }
+
+        .social-link-large i {
+            font-size: 2rem;
+        }
+
+        .social-link-large.whatsapp {
+            color: #25d366;
+        }
+
+        .social-link-large.whatsapp:hover {
+            background: rgba(37, 211, 102, 0.1);
+        }
+
+        .social-link-large.twitter {
+            color: #1da1f2;
+        }
+
+        .social-link-large.twitter:hover {
+            background: rgba(29, 161, 242, 0.1);
+        }
+
+        .social-link-large.linkedin {
+            color: #0a66c2;
+        }
+
+        .social-link-large.linkedin:hover {
+            background: rgba(10, 102, 194, 0.1);
+        }
+
+        .social-link-large.instagram {
+            background: linear-gradient(45deg, #feda75, #fa7e1e, #d92e7f, #9b36b7, #515bd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-link-large.instagram:hover {
+            background: linear-gradient(45deg, rgba(254, 218, 117, 0.15), rgba(250, 126, 30, 0.15), rgba(217, 46, 127, 0.15), rgba(155, 54, 183, 0.15), rgba(81, 91, 212, 0.15));
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: unset;
+            color: #d92e7f;
+        }
+
+        /* Responsive Contact Cards */
+        @media (max-width: 768px) {
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .contact-card-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .contact-card-title {
+                font-size: 1.1rem;
+            }
+
+            .contact-card-text {
+                font-size: 1rem;
+            }
+
+            .working-hours-card,
+            .social-media-card {
+                padding: 1.5rem;
+            }
+
+            .working-hours-card h4,
+            .social-media-card h4 {
+                font-size: 1.2rem;
+            }
+
+            .social-link-large {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .social-link-large i {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ==================== Responsive Design ==================== */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: auto;
+                padding: 40px 0;
+            }
+
+            .hero-content {
+                width: 100%;
+                padding: 0 !important;
+            }
+
+            .hero-title {
+                font-size: 1.6rem;
+                margin-top: 50px;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-hero {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-slider {
+                width: 100%;
+                height: 280px;
+                margin-top: 30px;
+            }
+
+            .slider-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+
+            .filter-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+                margin-top:50px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+        }
+
+        /* ==================== Floating WhatsApp Button ==================== */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--gradient-secondary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            z-index: 1000;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+            color: white;
+        }
+
+        /* ==================== Text Display Enhancement ==================== */
+        .text-justify {
+            text-align: justify;
+        }
+    
+        /* ==================== Centered Contact Cards ==================== */
+        .contact-info-container {
+            width: 100%;
+        }
+
+        .contact-card-centered {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-card-centered:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .contact-card-centered:hover .contact-card-icon {
+            transform: scale(1.15) rotateZ(10deg);
+        }
+
+        .contact-card-title {
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--color-primary);
-            text-align: center;
-            padding: 0.75rem;
-            background-color: var(--color-bg-1);
-            border-radius: 8px;
-            border: 1px solid var(--color-card-border-inner);
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
         }
 
-        /* Special Badges */
-        .badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
+        .contact-card-text {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card-text a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-card-text a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .contact-card-description {
+            display: block;
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ==================== Compact Footer ==================== */
+        .footer-compact {
+            background: linear-gradient(135deg, #0b3d91 0%, #08306f 100%);
+            color: white;
+            padding: 2rem 0 1rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content-compact {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section-compact {
+            text-align: right;
+        }
+
+        .footer-section-compact h5 {
+            font-size: 1.1rem;
             font-weight: 700;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            animation: badgePulse 2s ease-in-out infinite;
+            margin-bottom: 1rem;
+            color: #10b981;
         }
 
-        @keyframes badgePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .footer-section-compact p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
         }
 
-        .badge.popular {
-            background-color: var(--color-error);
-            color: var(--color-white);
+        .footer-section-compact ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .badge.new {
-            background-color: var(--color-success);
-            color: var(--color-white);
+        .footer-section-compact ul li {
+            margin-bottom: 0.5rem;
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 100;
+        .footer-section-compact ul li a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(90deg, 
-                var(--color-teal-500),
-                var(--color-teal-300));
-            width: 0%;
-            transition: width 0.3s ease;
-            box-shadow: 0 0 10px rgba(33, 128, 141, 0.5);
+        .footer-section-compact ul li a:hover {
+            color: #10b981;
+            padding-right: 0.5rem;
         }
 
-        /* Responsive Design */
+        .footer-bottom-compact {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Footer */
         @media (max-width: 768px) {
-            /* Show mobile dropdown, hide desktop nav */
-            .mobile-nav-toggle {
-                display: flex;
+            .footer-compact {
+                padding: 1.5rem 0 1rem 0;
+                margin-top: 3rem;
             }
 
-            .nav-scroll-container {
-                display: none;
-            }
-
-            .nav-container {
-                padding: 1rem;
-            }
-
-            /* When mobile nav is in horizontal mode */
-            .nav-container.horizontal-mode .mobile-nav-toggle {
-                display: none;
-            }
-
-            .nav-container.horizontal-mode .nav-scroll-container {
-                display: block;
-            }
-
-            /* Improved mobile horizontal navigation */
-            .nav-container.horizontal-mode .nav-grid {
-                gap: 0.5rem;
-                padding: 0.5rem;
-                scroll-padding: 0.5rem;
-            }
-
-            .nav-container.horizontal-mode .nav-item {
-                min-width: 100px;
-                padding: 0.6rem 0.8rem;
-                border-radius: 12px;
-                white-space: nowrap;
-            }
-
-            .nav-container.horizontal-mode .nav-icon {
-                font-size: 1.1rem;
-                margin-bottom: 0.2rem;
-            }
-
-            .nav-container.horizontal-mode .nav-title {
-                font-size: 0.75rem;
-                line-height: 1.1;
-            }
-
-            /* Enhanced scroll indicators for mobile */
-            .nav-container.horizontal-mode .nav-scroll-indicator {
-                width: 1.5rem;
-            }
-
-            .nav-container.horizontal-mode .scroll-arrow {
-                width: 1.5rem;
-                height: 1.5rem;
-                font-size: 0.7rem;
-            }
-
-            .items-grid {
+            .footer-content-compact {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .restaurant-title {
-                font-size: 1.8rem;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-
-            .header {
+            .contact-card-centered {
                 padding: 1.5rem;
             }
 
-            .content {
-                padding: 1rem;
-            }
-
-            .nav-container {
-                padding: 0.75rem 1rem;
-            }
-
-            .lang-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
+            .contact-card-icon {
                 width: 60px;
                 height: 60px;
-            }
-
-            .restaurant-title {
                 font-size: 1.5rem;
             }
 
-            .header {
-                padding: 1rem;
+            .contact-card-title {
+                font-size: 1.1rem;
             }
 
-            .header-controls {
-                top: 1rem;
-                right: 1rem;
+            .footer-section-compact {
+                text-align: right;
             }
 
-            /* Ultra compact mobile nav items */
-            .nav-container.horizontal-mode .nav-item {
-                min-width: 85px;
-                padding: 0.5rem 0.6rem;
-            }
-
-            .nav-container.horizontal-mode .nav-icon {
+            .footer-section-compact h5 {
                 font-size: 1rem;
-                margin-bottom: 0.1rem;
-            }
-
-            .nav-container.horizontal-mode .nav-title {
-                font-size: 0.7rem;
             }
         }
 
-        /* Navigation Mode Toggle Button */
-        .nav-mode-toggle {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background: var(--color-secondary);
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 15;
-            display: none;
-        }
+        @media (max-width: 576px) {
+            .footer-compact {
+                padding: 1rem 0 0.5rem 0;
+                margin-top: 2rem;
+            }
 
-        .nav-mode-toggle:hover {
-            background: var(--color-secondary-hover);
-        }
+            .footer-content-compact {
+                gap: 1rem;
+            }
 
-        @media (max-width: 768px) {
-            .nav-mode-toggle {
-                display: block;
+            .contact-card-centered {
+                padding: 1.2rem;
+            }
+
+            .contact-card-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .contact-card-title {
+                font-size: 0.95rem;
+            }
+
+            .footer-section-compact h5 {
+                font-size: 0.95rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-section-compact p,
+            .footer-section-compact ul li a {
+                font-size: 0.85rem;
             }
         }
-
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(33, 128, 141, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--color-teal-500);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* RTL Support */
-        [dir="ltr"] .header-controls {
-            right: auto;
-            left: 2rem;
-        }
-
-        [dir="ltr"] .nav-item,
-        [dir="ltr"] .menu-item {
-            text-align: left;
-        }
-
-        [dir="ltr"] .badge {
-            right: auto;
-            left: 1rem;
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+</style>
 </head>
 <body>
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress"></div>
+
+    <!-- ==================== Navigation Bar ==================== -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="12.jpg" alt="صفقة وجودة" class="navbar-logo">
+                <span class="brand-text">صفقة وجودة</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">خدماتنا</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">مشاريعنا</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">تواصل معنا</a>
+                    </li>
+                </ul>
+                <a href="https://wa.me/0552552492" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>واتساب</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== Hero Section ==================== -->
+    <section id="home" class="hero-section">
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <!-- Text on the Right -->
+                <div class="col-lg-5 col-12 mb-4 mb-lg-0 hero-content">
+                    <h1 class="hero-title">حلول متكاملة للأمان والاتصالات والبنية التحتية</h1>
+                    <p class="hero-subtitle">
+                        نقدم خدمات تركيب وتجهيز أنظمة الأمان، الشبكات، السنترالات، وأنظمة الحضور بأحدث التقنيات وأعلى معايير الجودة لخدمة الشركات والمؤسسات في المملكة.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-hero btn-hero-primary">
+                            <span>ابدأ الآن</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        <a href="#services" class="btn-hero btn-hero-secondary">
+                            <span>الخدمات</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا</h2>
+            <div class="row g-4">
+                <!-- Card 1 - Surveillance Cameras -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="7.jpg" alt="كاميرات مراقبة" class="service-image">
+                            <div class="service-icon-overlay">
+                                <i class="fas fa-video"></i>
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3 class="service-title">
+                                <i class="fas fa-video" style="color: var(--secondary-color);"></i>
+                                تركيب كاميرات مراقبة بدقة عالية
+                            </h3>
+                            <p class="service-description">
+                                كاميرات IP وHD مع تسجيل، مراقبة عن بُعد، تكامل مع تطبيقات الموبايل وتخزين سحابي أو محلي.
+                            </p>
+                            <ul class="service-features">
+                                <li>تصوير ليل/نهار</li>
+                                <li>تحليل فيديو أساسي (حركة)</li>
+                                <li>تخزين واسترجاع سهل</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 - PBX Systems -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="3.jpg" alt="سنترالات الهاتف" class="service-image">
+                            <div class="service-icon-overlay">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3 class="service-title">
+                                <i class="fas fa-phone" style="color: var(--secondary-color);"></i>
+                                تجهيز وربط سنترالات الهاتف
+                            </h3>
+                            <p class="service-description">
+                                نقوم بتركيب سنترالات رقمية وتحويلية، ربط فروع، إعداد قوائم انتظار، وتحويل المكالمات بفعالية.
+                            </p>
+                            <ul class="service-features">
+                                <li>سنترالات VOIP حديثة</li>
+                                <li>ربط الفروع بسهولة</li>
+                                <li>تسجيل وتحويل المكالمات</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Attendance Systems -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="8.jpg" alt="أنظمة حضور وانصراف" class="service-image">
+                            <div class="service-icon-overlay">
+                                <i class="fas fa-fingerprint"></i>
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3 class="service-title">
+                                <i class="fas fa-fingerprint" style="color: var(--secondary-color);"></i>
+                                أنظمة حضور وانصراف ببصمة
+                            </h3>
+                            <p class="service-description">
+                                تركيب أنظمة ببصمة للموظفين، تقارير حضور آلية، وأبواب دخول ذكية متكاملة.
+                            </p>
+                            <ul class="service-features">
+                                <li>بصمة وجه وإصبع</li>
+                                <li>تقارير آلية دقيقة</li>
+                                <li>أبواب ذكية وآمنة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 - Servers -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="2.jpg" alt="سيرفرات وشبكات" class="service-image">
+                            <div class="service-icon-overlay">
+                                <i class="fas fa-server"></i>
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3 class="service-title">
+                                <i class="fas fa-server" style="color: var(--secondary-color);"></i>
+                                تجهيز وإدارة السيرفرات والشبكات
+                            </h3>
+                            <p class="service-description">
+                                خدمات بناء غرف سيرفرات، تركيب أجهزة NAS، إعداد نسخ احتياطي، وتأمين الشبكات.
+                            </p>
+                            <ul class="service-features">
+                                <li>بناء Data Centers</li>
+                                <li>تأمين البيانات والنسخ الاحتياطي</li>
+                                <li>شبكات سريعة وآمنة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 - Infrastructure -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="10.jpg" alt="البنية التحتية" class="service-image">
+                            <div class="service-icon-overlay">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3 class="service-title">
+                                <i class="fas fa-network-wired" style="color: var(--secondary-color);"></i>
+                                تجهيز البنية التحتية للشبكات
+                            </h3>
+                            <p class="service-description">
+                                تركيب وتمديد كابلات، إعداد Racks، تنظيم الشبكات، وضبط المعدات.
+                            </p>
+                            <ul class="service-features">
+                                <li>Structured Cabling</li>
+                                <li>Fiber Optics</li>
+                                <li>تنظيم احترافي للمعدات</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 - Maintenance -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <div style="width: 100%; height: 220px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-tools" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                            </div>
+                            <div class="service-icon-overlay">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                        </div>
+                        <div class="service-body">
+                            <h3 class="service-title">
+                                <i class="fas fa-tools" style="color: var(--secondary-color);"></i>
+                                عقود صيانة ودعم فني
+                            </h3>
+                            <p class="service-description">
+                                عقود صيانة شهرية وسنوية، استجابة سريعة، دعم عن بُعد وميداني.
+                            </p>
+                            <ul class="service-features">
+                                <li>دعم فني 24/7</li>
+                                <li>عقود مرنة ومخصصة</li>
+                                <li>صيانة وقائية دورية</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Features Section ==================== -->
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">لماذا تختار ركيب؟</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3 class="feature-title">جودة عالية</h3>
+                        <p class="feature-description">
+                            نستخدم أفضل المعدات والتقنيات العالمية
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="feature-title">سرعة التنفيذ</h3>
+                        <p class="feature-description">
+                            ننجز المشاريع في أقصر وقت ممكن
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="feature-title">دعم فني مستمر</h3>
+                        <p class="feature-description">
+                            فريق دعم متوفر 24/7 لخدمتكم
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3 class="feature-title">أسعار تنافسية</h3>
+                        <p class="feature-description">
+                            أفضل الأسعار مقابل الجودة العالية
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Portfolio Section ==================== -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">مشاريعنا</h2>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="cameras">كاميرات</button>
+                <button class="filter-btn" data-filter="pbx">سنترالات</button>
+                <button class="filter-btn" data-filter="servers">سيرفرات</button>
+                <button class="filter-btn" data-filter="attendance">حضور</button>
+                <button class="filter-btn" data-filter="network">شبكات</button>
+                <button class="filter-btn" data-filter="security">أمان</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="row g-4" id="projectsGrid">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="cameras">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="7.jpg" alt="كاميرات مول تجاري" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">كاميرات لمول تجاري</h3>
+                            <p class="project-description">
+                                تركيب 24 كاميرا IP مع NVR وتخزين 30 يوم
+                            </p>
+                            <button class="btn-view-project" onclick="openProjectModal('project1')">
+                                <span>عرض المشروع</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="pbx">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="4.jpg" alt="سنترال VOIP" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">سنترال VOIP لشركة</h3>
+                            <p class="project-description">
+                                تنصيب سنترال VOIP وربط 3 فروع
+                            </p>
+                            <button class="btn-view-project" onclick="openProjectModal('project2')">
+                                <span>عرض المشروع</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="servers">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="5.jpg" alt="Data Center" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">تجهيز Data Center</h3>
+                            <p class="project-description">
+                                إعداد خوادم ونسخ احتياطي واستضافة داخلية
+                            </p>
+                            <button class="btn-view-project" onclick="openProjectModal('project3')">
+                                <span>عرض المشروع</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="attendance">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="10.jpg" alt="نظام حضور ببصمة الوجه" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">نظام حضور ببصمة الوجه</h3>
+                            <p class="project-description">
+                                تركيب أجهزة بصمة وجه وربط مع نظام الرواتب
+                            </p>
+                            <button class="btn-view-project" onclick="openProjectModal('project4')">
+                                <span>عرض المشروع</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="network">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="2.jpg" alt="بنية تحتية للشبكات" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">بنية تحتية للشبكات</h3>
+                            <p class="project-description">
+                                تمديد كابلات وتنظيم Racks لمبنى إداري
+                            </p>
+                            <button class="btn-view-project" onclick="openProjectModal('project5')">
+                                <span>عرض المشروع</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="security">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="8.jpg" alt="نظام أمان وتحكم بالأبواب" class="project-image">
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">نظام أمان وتحكم بالأبواب</h3>
+                            <p class="project-description">
+                                تركيب نظام تحكم بالأبواب مع بصمة وكاميرات
+                            </p>
+                            <button class="btn-view-project" onclick="openProjectModal('project6')">
+                                <span>عرض المشروع</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Project Modals ==================== -->
+    <!-- Project 1 Modal -->
+    <div class="modal fade" id="project1Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">كاميرات لمول تجاري</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="7.jpg" alt="كاميرات مول تجاري" class="modal-project-image">
+                    <h5>تفاصيل المشروع:</h5>
+                    <p>تركيب كاميرات IP بدقة 4MP، ضبط زوايا، تركيب NVR، تكوين مراقبة عن بُعد.</p>
+                    <ul>
+                        <li><strong>عدد الكاميرات:</strong> 24 كاميرا IP</li>
+                        <li><strong>الدقة:</strong> 4 ميجابكسل</li>
+                        <li><strong>التخزين:</strong> 30 يوم</li>
+                        <li><strong>المدة:</strong> يومان</li>
+                        <li><strong>التقنيات:</strong> NVR، المراقبة عن بُعد، تطبيق موبايل</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Animated Background Shapes -->
-    <div class="bg-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
+    <!-- Project 2 Modal -->
+    <div class="modal fade" id="project2Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">سنترال VOIP لشركة</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="4.jpg" alt="سنترال VOIP" class="modal-project-image">
+                    <h5>تفاصيل المشروع:</h5>
+                    <p>تركيب سنترال 3CX، ربط 3 فروع، إعداد قوائم انتظار وتحويل ذكي للمكالمات.</p>
+                    <ul>
+                        <li><strong>النظام:</strong> 3CX VOIP</li>
+                        <li><strong>عدد الفروع:</strong> 3 فروع</li>
+                        <li><strong>عدد الخطوط:</strong> 20 خط داخلي</li>
+                        <li><strong>المدة:</strong> 3 أيام</li>
+                        <li><strong>الميزات:</strong> قوائم انتظار، تسجيل المكالمات، تحويل ذكي</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Main Container -->
-    <div class="glass-container" style="margin: 1rem; min-height: calc(100vh - 2rem);">
-        <!-- Header -->
-        <header class="header">
-            <!-- Theme & Language Toggles -->
-            <div class="header-controls">
-                <button class="theme-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
-                    <span class="theme-icon sun-icon">☀️</span>
-                    <span class="theme-icon moon-icon">🌙</span>
-                </button>
-                <button class="lang-btn" onclick="toggleLanguage()">
-                    <span id="lang-text">EN</span>
-                </button>
-            </div>
-
-            <div class="logo-container">
-                <img src="Picture1.png" alt="Logo" class="logo" onerror="this.style.display='none'">
-            </div>
-            <h1 class="restaurant-title" id="restaurant-title">مطعم توليب</h1>
-            <p class="welcome-text" id="welcome-text">مرحباً بكم في منيو مطعم توليب</p>
-        </header>
-
-        <!-- Navigation -->
-        <nav class="nav-container">
-            <!-- Mobile Navigation Mode Toggle -->
-            <button class="nav-mode-toggle" onclick="toggleNavMode()" title="تبديل وضع التنقل">⇄</button>
-            
-            <!-- Mobile Dropdown Navigation -->
-            <div class="nav-wrapper">
-                <button class="mobile-nav-toggle" onclick="toggleMobileNav()">
-                    <span id="selected-category">الشوربة</span>
-                    <span class="dropdown-arrow">▼</span>
-                </button>
-                
-                <div class="mobile-dropdown" id="mobile-dropdown">
-                    <div class="mobile-nav-item active" data-category="soups">
-                        <span class="nav-icon">🍲</span>
-                        <div class="nav-title" data-ar="الشوربة" data-en="Soup">الشوربة</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="salads">
-                        <span class="nav-icon">🥗</span>
-                        <div class="nav-title" data-ar="السلطات" data-en="Salads">السلطات</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="pasta">
-                        <span class="nav-icon">🍝</span>
-                        <div class="nav-title" data-ar="المعكرونة" data-en="Pasta">المعكرونة</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="pizza">
-                        <span class="nav-icon">🍕</span>
-                        <div class="nav-title" data-ar="البيتزا" data-en="Pizza">البيتزا</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="sandwiches">
-                        <span class="nav-icon">🥪</span>
-                        <div class="nav-title" data-ar="السندويتشات" data-en="Sandwiches">السندويتشات</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="main_course">
-                        <span class="nav-icon">🍖</span>
-                        <div class="nav-title" data-ar="الأطباق الرئيسية" data-en="Main Dishes">الأطباق الرئيسية</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="fresh_beverages">
-                        <span class="nav-icon">🥤</span>
-                        <div class="nav-title" data-ar="مشروبات طازجة" data-en="Fresh Beverages">مشروبات طازجة</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="hot_drinks">
-                        <span class="nav-icon">☕</span>
-                        <div class="nav-title" data-ar="مشروبات ساخنة" data-en="Hot Drinks">مشروبات ساخنة</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="soft_drinks">
-                        <span class="nav-icon">🥤</span>
-                        <div class="nav-title" data-ar="مشروبات غازية" data-en="Soft Drinks">مشروبات غازية</div>
-                    </div>
-                    <div class="mobile-nav-item" data-category="desserts">
-                        <span class="nav-icon">🍰</span>
-                        <div class="nav-title" data-ar="حلويات" data-en="Desserts">حلويات</div>
-                    </div>
+    <!-- Project 3 Modal -->
+    <div class="modal fade" id="project3Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">تجهيز Data Center</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="5.jpg" alt="Data Center" class="modal-project-image">
+                    <h5>تفاصيل المشروع:</h5>
+                    <p>بناء غرفة سيرفرات متكاملة، تركيب UPS، إعداد NAS، نسخ احتياطي يومي.</p>
+                    <ul>
+                        <li><strong>المساحة:</strong> 40 متر مربع</li>
+                        <li><strong>السيرفرات:</strong> 6 سيرفرات</li>
+                        <li><strong>التخزين:</strong> 50 تيرابايت</li>
+                        <li><strong>المدة:</strong> أسبوعان</li>
+                        <li><strong>التجهيزات:</strong> UPS، تكييف خاص، نظام إنذار حريق</li>
+                    </ul>
                 </div>
             </div>
-            
-            <!-- Desktop/Horizontal Mobile Navigation -->
-            <div class="nav-scroll-container">
-                <!-- Left Scroll Indicator -->
-                <div class="nav-scroll-indicator left" id="scroll-left">
-                    <button class="scroll-arrow" onclick="scrollNavigation('left')">‹</button>
-                </div>
-                
-                <!-- Right Scroll Indicator -->
-                <div class="nav-scroll-indicator right" id="scroll-right">
-                    <button class="scroll-arrow" onclick="scrollNavigation('right')">›</button>
-                </div>
-                
-                <div class="nav-grid" id="nav-grid">
-                <div class="nav-item active" data-category="soups">
-                    <span class="nav-icon">🍲</span>
-                    <div class="nav-title" data-ar="الشوربة" data-en="Soup">الشوربة</div>
-                </div>
-                <div class="nav-item" data-category="salads">
-                    <span class="nav-icon">🥗</span>
-                    <div class="nav-title" data-ar="السلطات" data-en="Salads">السلطات</div>
-                </div>
-                <div class="nav-item" data-category="pasta">
-                    <span class="nav-icon">🍝</span>
-                    <div class="nav-title" data-ar="المعكرونة" data-en="Pasta">المعكرونة</div>
-                </div>
-                <div class="nav-item" data-category="pizza">
-                    <span class="nav-icon">🍕</span>
-                    <div class="nav-title" data-ar="البيتزا" data-en="Pizza">البيتزا</div>
-                </div>
-                <div class="nav-item" data-category="sandwiches">
-                    <span class="nav-icon">🥪</span>
-                    <div class="nav-title" data-ar="السندويتشات" data-en="Sandwiches">السندويتشات</div>
-                </div>
-                <div class="nav-item" data-category="main_course">
-                    <span class="nav-icon">🍖</span>
-                    <div class="nav-title" data-ar="الأطباق الرئيسية" data-en="Main Dishes">الأطباق الرئيسية</div>
-                </div>
-                <div class="nav-item" data-category="fresh_beverages">
-                    <span class="nav-icon">🥤</span>
-                    <div class="nav-title" data-ar="مشروبات طازجة" data-en="Fresh Beverages">مشروبات طازجة</div>
-                </div>
-                <div class="nav-item" data-category="hot_drinks">
-                    <span class="nav-icon">☕</span>
-                    <div class="nav-title" data-ar="مشروبات ساخنة" data-en="Hot Drinks">مشروبات ساخنة</div>
-                </div>
-                <div class="nav-item" data-category="soft_drinks">
-                    <span class="nav-icon">🥤</span>
-                    <div class="nav-title" data-ar="مشروبات غازية" data-en="Soft Drinks">مشروبات غازية</div>
-                </div>
-                <div class="nav-item" data-category="desserts">
-                    <span class="nav-icon">🍰</span>
-                    <div class="nav-title" data-ar="حلويات" data-en="Desserts">حلويات</div>
-                </div>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Content -->
-        <main class="content">
-            <!-- Menu Sections will be generated by JavaScript -->
-        </main>
+        </div>
     </div>
 
-    <script>
-        // Theme state
-        let currentTheme = 'light';
+    <!-- Project 4 Modal -->
+    <div class="modal fade" id="project4Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">نظام حضور ببصمة الوجه</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="10.jpg" alt="نظام حضور ببصمة الوجه" class="modal-project-image">
+                    <h5>تفاصيل المشروع:</h5>
+                    <p>تركيب 8 أجهزة بصمة وجه، ربط مع نظام الرواتب، تقارير حضور تلقائية.</p>
+                    <ul>
+                        <li><strong>عدد الأجهزة:</strong> 8 أجهزة</li>
+                        <li><strong>التقنية:</strong> بصمة الوجه</li>
+                        <li><strong>عدد الموظفين:</strong> 150 موظف</li>
+                        <li><strong>المدة:</strong> 3 أيام</li>
+                        <li><strong>التكامل:</strong> ربط مع نظام الرواتب، تقارير تلقائية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Menu Data with Image Gradients
-        const menuData = {
-            soups: {
-                name_ar: "الشوربة",
-                name_en: "Soup",
-                items: [
-                    { name_ar: "شوربة الدجاج بالكريمة", name_en: "Chicken Cream Soup", price: "95.00 جنيه", price_en: "95.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FFA726, #FF7043)" },
-                    { name_ar: "شوربة الطماطم", name_en: "Tomato Soup", price: "70.00 جنيه", price_en: "70.00 EGP", image_gradient: "linear-gradient(135deg, #E53935, #FF5722)" },
-                    { name_ar: "شوربة الشعرية", name_en: "Vermicelli Soup", price: "50.00 جنيه", price_en: "50.00 EGP", image_gradient: "linear-gradient(135deg, #F9A825, #FFB74D)" },
-                    { name_ar: "شوربة العدس المصرية", name_en: "Egyptian Lentil Soup", price: "60.00 جنيه", price_en: "60.00 EGP", badge: "new", image_gradient: "linear-gradient(135deg, #8BC34A, #689F38)" }
-                ]
-            },
-            salads: {
-                name_ar: "السلطات",
-                name_en: "Salads",
-                items: [
-                    { name_ar: "شرائح السالمون المدخن", name_en: "Smoked Salmon Slices", price: "260.00 جنيه", price_en: "260.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FF8A65, #FF7043)" },
-                    { name_ar: "سلطة سيزر الكلاسيكية", name_en: "Classic Caesar Salad", price: "95.00 جنيه", price_en: "95.00 EGP", image_gradient: "linear-gradient(135deg, #66BB6A, #4CAF50)" },
-                    { name_ar: "السلطة اليونانية", name_en: "Greek Salad", price: "95.00 جنيه", price_en: "95.00 EGP", image_gradient: "linear-gradient(135deg, #42A5F5, #1E88E5)" },
-                    { name_ar: "السلطة الموسمية الطازجة", name_en: "Fresh Seasonal Salad", price: "65.00 جنيه", price_en: "65.00 EGP", image_gradient: "linear-gradient(135deg, #26A69A, #00796B)" }
-                ]
-            },
-            pasta: {
-                name_ar: "المعكرونة",
-                name_en: "Pasta",
-                items: [
-                    { name_ar: "صوص فواكه البحر بالكريمة", name_en: "Seafood Cream Sauce", desc_ar: "سباجيتي - بيني - فوسيلي مع اختيارك من الصوص", desc_en: "Spaghetti - Penne - Fusilli with your choice of sauce", price: "180.00 جنيه", price_en: "180.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #26C6DA, #00ACC1)" },
-                    { name_ar: "صوص بولونيز (اللحم المفروم)", name_en: "Bolognese Sauce (Minced Meat)", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #D32F2F, #C62828)" },
-                    { name_ar: "صلصة الطماطم", name_en: "Tomato Sauce", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #FF5722, #E64A19)" },
-                    { name_ar: "صلصة الطماطم الحارة (الأرابياتا)", name_en: "Spicy Tomato Sauce (Arrabiata)", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #FF3D00, #DD2C00)" },
-                    { name_ar: "صلصة عيش الغراب البيضاء", name_en: "White Mushroom Sauce", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #A1887F, #8D6E63)" }
-                ]
-            },
-            pizza: {
-                name_ar: "البيتزا",
-                name_en: "Pizza",
-                items: [
-                    { name_ar: "بيتزا سلامي", name_en: "Salami Pizza", price: "135.00 جنيه", price_en: "135.00 EGP", image_gradient: "linear-gradient(135deg, #FF6B35, #F7931E)" },
-                    { name_ar: "بيتزا الدجاج", name_en: "Chicken Pizza", price: "145.00 جنيه", price_en: "145.00 EGP", image_gradient: "linear-gradient(135deg, #FFB74D, #FF9800)" },
-                    { name_ar: "بيتزا عيش الغراب", name_en: "Mushroom Pizza", price: "125.00 جنيه", price_en: "125.00 EGP", image_gradient: "linear-gradient(135deg, #8BC34A, #689F38)" },
-                    { name_ar: "بيتزا فواكه البحر", name_en: "Seafood Pizza (Frutti de Mare)", price: "250.00 جنيه", price_en: "250.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #29B6F6, #0288D1)" },
-                    { name_ar: "بيتزا مارجريتا", name_en: "Margherita Pizza", price: "120.00 جنيه", price_en: "120.00 EGP", image_gradient: "linear-gradient(135deg, #66BB6A, #43A047)" },
-                    { name_ar: "بيتزا خضروات", name_en: "Vegetarian Pizza", price: "120.00 جنيه", price_en: "120.00 EGP", image_gradient: "linear-gradient(135deg, #9CCC65, #7CB342)" }
-                ]
-            },
-            sandwiches: {
-                name_ar: "السندويتشات",
-                name_en: "Sandwiches",
-                items: [
-                    { name_ar: "السالمون المدخن", name_en: "Smoked Salmon", price: "280.00 جنيه", price_en: "280.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FF8A80, #FF5722)" },
-                    { name_ar: "شرائح اللحم البقري المتبلة", name_en: "Seasoned Beef Steak", price: "185.00 جنيه", price_en: "185.00 EGP", image_gradient: "linear-gradient(135deg, #8D6E63, #6D4C41)" },
-                    { name_ar: "توليب بيف برجر", name_en: "Tolip Beef Burger", price: "160.00 جنيه", price_en: "160.00 EGP", image_gradient: "linear-gradient(135deg, #D32F2F, #B71C1C)" },
-                    { name_ar: "جمبري بانية", name_en: "Breaded Shrimp", price: "195.00 جنيه", price_en: "195.00 EGP", image_gradient: "linear-gradient(135deg, #FF7043, #E64A19)" },
-                    { name_ar: "كلوب ساندويتش", name_en: "Club Sandwiches", price: "155.00 جنيه", price_en: "155.00 EGP", image_gradient: "linear-gradient(135deg, #FFB74D, #FF8F00)" },
-                    { name_ar: "دجاج بانية", name_en: "Breaded Chicken", price: "150.00 جنيه", price_en: "150.00 EGP", image_gradient: "linear-gradient(135deg, #FFA726, #F57C00)" }
-                ]
-            },
-            main_course: {
-                name_ar: "الأطباق الرئيسية",
-                name_en: "Main Dishes",
-                items: [
-                    { name_ar: "تشكيلة من المشويات البحرية", name_en: "Mixed Seafood Grill", price: "585.00 جنيه", price_en: "585.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #26C6DA, #0097A7)" },
-                    { name_ar: "جمبري مشوي", name_en: "Grilled Shrimp", price: "550.00 جنيه", price_en: "550.00 EGP", image_gradient: "linear-gradient(135deg, #FF7043, #D84315)" },
-                    { name_ar: "سمك فيليه مشوي أو مقلي", name_en: "Grilled or Fried Fish Fillet", price: "350.00 جنيه", price_en: "350.00 EGP", image_gradient: "linear-gradient(135deg, #42A5F5, #1976D2)" },
-                    { name_ar: "تشكيلة من المشويات الشرقية", name_en: "Oriental Mix Grill", price: "515.00 جنيه", price_en: "515.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #8D6E63, #5D4037)" },
-                    { name_ar: "فيليه اللحم البقري المشوي", name_en: "Grilled Beef Fillet", price: "515.00 جنيه", price_en: "515.00 EGP", image_gradient: "linear-gradient(135deg, #D32F2F, #B71C1C)" },
-                    { name_ar: "كفتة مشوية", name_en: "Grilled Kofta", price: "220.00 جنيه", price_en: "220.00 EGP", image_gradient: "linear-gradient(135deg, #A1887F, #6D4C41)" },
-                    { name_ar: "دجاج مشوي مع الروزماري", name_en: "Grilled Rosemary Chicken", price: "220.00 جنيه", price_en: "220.00 EGP", image_gradient: "linear-gradient(135deg, #FFB74D, #F57C00)" },
-                    { name_ar: "دجاج بانية", name_en: "Breaded Chicken", price: "210.00 جنيه", price_en: "210.00 EGP", image_gradient: "linear-gradient(135deg, #FFA726, #E65100)" },
-                    { name_ar: "شيش طاووق", name_en: "Chicken Shish Tawook", price: "200.00 جنيه", price_en: "200.00 EGP", image_gradient: "linear-gradient(135deg, #FF8A65, #BF360C)" }
-                ]
-            },
-            fresh_beverages: {
-                name_ar: "مشروبات طازجة",
-                name_en: "Fresh Beverages",
-                items: [
-                    { name_ar: "برتقال طازج", name_en: "Fresh Orange", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FF9800, #F57C00)" },
-                    { name_ar: "ليمون طازج", name_en: "Fresh Lemon", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FFEB3B, #F9A825)" },
-                    { name_ar: "مانجو طازجة", name_en: "Fresh Mango", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FFC107, #FF8F00)" },
-                    { name_ar: "جوافة طازجة", name_en: "Fresh Guava", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #E91E63, #C2185B)" },
-                    { name_ar: "فلوريدا", name_en: "Florida", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FF5722, #D84315)" },
-                    { name_ar: "كوكتيل جوافة ومانجو وبرتقال", name_en: "Guava, Mango, Orange Cocktail", price: "95.00 جنيه", price_en: "95.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FF6D00, #E65100)" },
-                    { name_ar: "صن شاين", name_en: "Sun Shine", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #FFC107, #FF8F00)" },
-                    { name_ar: "أورانج فيليب", name_en: "Orange Philip", price: "90.00 جنيه", price_en: "90.00 EGP", image_gradient: "linear-gradient(135deg, #FF9800, #E65100)" },
-                    { name_ar: "فيرجن بينا كولادا", name_en: "Virgin Pina Colada", price: "90.00 جنيه", price_en: "90.00 EGP", image_gradient: "linear-gradient(135deg, #FFEB3B, #FFC107)" }
-                ]
-            },
-            hot_drinks: {
-                name_ar: "مشروبات ساخنة",
-                name_en: "Hot Drinks",
-                items: [
-                    { name_ar: "شاي أسود", name_en: "Black Tea", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #8D6E63, #5D4037)" },
-                    { name_ar: "شاي أخضر", name_en: "Green Tea", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #66BB6A, #388E3C)" },
-                    { name_ar: "ينسون", name_en: "Anise", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #A1887F, #6D4C41)" },
-                    { name_ar: "نعناع", name_en: "Mint", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #4CAF50, #2E7D32)" },
-                    { name_ar: "بابونج", name_en: "Chamomile", price: "40.00 جنيه", price_en: "40.00 EGP", image_gradient: "linear-gradient(135deg, #FFF176, #F9A825)" },
-                    { name_ar: "قهوة تركية", name_en: "Turkish Coffee", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #6D4C41, #3E2723)" },
-                    { name_ar: "قهوة فرنسية", name_en: "French Coffee", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #8D6E63, #4E342E)" },
-                    { name_ar: "إسبريسو", name_en: "Espresso", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #5D4037, #3E2723)" },
-                    { name_ar: "قهوة أمريكية", name_en: "American Coffee", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #795548, #4E342E)" },
-                    { name_ar: "كابتشينو", name_en: "Cappuccino", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #A1887F, #5D4037)" },
-                    { name_ar: "إسبريسو لاتيه", name_en: "Espresso Latte", price: "105.00 جنيه", price_en: "105.00 EGP", image_gradient: "linear-gradient(135deg, #BCAAA4, #8D6E63)" },
-                    { name_ar: "إسبريسو ماكياتو", name_en: "Espresso Macchiato", price: "80.00 جنيه", price_en: "80.00 EGP", image_gradient: "linear-gradient(135deg, #6D4C41, #4E342E)" }
-                ]
-            },
-            soft_drinks: {
-                name_ar: "مشروبات غازية",
-                name_en: "Soft Drinks",
-                items: [
-                    { name_ar: "مياه معدنية صغيرة", name_en: "Small Mineral Water", price: "25.00 جنيه", price_en: "25.00 EGP", image_gradient: "linear-gradient(135deg, #81D4FA, #29B6F6)" },
-                    { name_ar: "كوكاكولا، سبرايت، فانتا", name_en: "Coca-Cola, Sprite, Fanta", price: "50.00 جنيه", price_en: "50.00 EGP", image_gradient: "linear-gradient(135deg, #F44336, #D32F2F)" },
-                    { name_ar: "ريد بول", name_en: "Red Bull", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #2196F3, #0D47A1)" },
-                    { name_ar: "بيريل فيروز", name_en: "Beryl Fairuz", price: "85.00 جنيه", price_en: "85.00 EGP", image_gradient: "linear-gradient(135deg, #00BCD4, #0097A7)" },
-                    { name_ar: "مياه فوارة", name_en: "Sparkling Water", price: "65.00 جنيه", price_en: "65.00 EGP", image_gradient: "linear-gradient(135deg, #B3E5FC, #03A9F4)" }
-                ]
-            },
-            desserts: {
-                name_ar: "حلويات",
-                name_en: "Desserts",
-                items: [
-                    { name_ar: "سلطة فواكه", name_en: "Fruit Salad", price: "110.00 جنيه", price_en: "110.00 EGP", image_gradient: "linear-gradient(135deg, #FF5722, #E91E63)" },
-                    { name_ar: "كيك الجبنة", name_en: "Cheese Cake", price: "110.00 جنيه", price_en: "110.00 EGP", badge: "popular", image_gradient: "linear-gradient(135deg, #FFF176, #FFC107)" },
-                    { name_ar: "براونيز الشوكولاتة", name_en: "Chocolate Brownies", price: "110.00 جنيه", price_en: "110.00 EGP", image_gradient: "linear-gradient(135deg, #6D4C41, #3E2723)" },
-                    { name_ar: "تشكيلة الحلويات الشرقية", name_en: "Oriental Sweets", price: "90.00 جنيه", price_en: "90.00 EGP", image_gradient: "linear-gradient(135deg, #FFB74D, #F57C00)" }
-                ]
-            }
-        };
+    <!-- Project 5 Modal -->
+    <div class="modal fade" id="project5Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">بنية تحتية للشبكات</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="2.jpg" alt="بنية تحتية للشبكات" class="modal-project-image">
+                    <h5>تفاصيل المشروع:</h5>
+                    <p>تمديد كابلات Cat6، تركيب Patch Panels، تنظيم معدات الشبكة في Racks.</p>
+                    <ul>
+                        <li><strong>المبنى:</strong> 4 طوابق</li>
+                        <li><strong>عدد النقاط:</strong> 120 نقطة</li>
+                        <li><strong>الكابلات:</strong> Cat6</li>
+                        <li><strong>المدة:</strong> 5 أيام</li>
+                        <li><strong>التجهيزات:</strong> Patch Panels، Racks، Switch</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Language state
-        let currentLanguage = 'ar';
+    <!-- Project 6 Modal -->
+    <div class="modal fade" id="project6Modal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">نظام أمان وتحكم بالأبواب</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="8.jpg" alt="نظام أمان وتحكم بالأبواب" class="modal-project-image">
+                    <h5>تفاصيل المشروع:</h5>
+                    <p>تركيب أجهزة تحكم بالأبواب، ربط مع كاميرات، نظام إنذار متكامل.</p>
+                    <ul>
+                        <li><strong>عدد الأبواب:</strong> 10 أبواب</li>
+                        <li><strong>التقنية:</strong> بصمة + بطاقات</li>
+                        <li><strong>الكاميرات:</strong> 15 كاميرا</li>
+                        <li><strong>المدة:</strong> 4 أيام</li>
+                        <li><strong>الميزات:</strong> نظام إنذار، تقارير الدخول والخروج</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Category icons mapping
-        const categoryIcons = {
-            soups: '🍲',
-            salads: '🥗',
-            pasta: '🍝',
-            pizza: '🍕',
-            sandwiches: '🥪',
-            main_course: '🍖',
-            fresh_beverages: '🥤',
-            hot_drinks: '☕',
-            soft_drinks: '🥤',
-            desserts: '🍰'
-        };
+    <!-- ==================== Testimonials Section ==================== -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "خدمة سريعة واحترافية — فريق ركيب قام بتركيب كاميرات لمقرنا خلال يومين فقط."
+                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h5 class="testimonial-author">أحمد محمد</h5>
+                        <p class="testimonial-position">مدير مول النور التجاري</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "السنترال كان مضبوط تمامًا وربطوا الفروع بدون مشاكل. دعم فني ممتاز."
+                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h5 class="testimonial-author">سارة علي</h5>
+                        <p class="testimonial-position">مديرة شركة التقنية المتقدمة</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "نظام الحضور والانصراف وفر علينا كثير من الوقت والجهد. تقارير دقيقة جداً."
+                        </p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h5 class="testimonial-author">محمد حسن</h5>
+                        <p class="testimonial-position">مدير الموارد البشرية - شركة الأفق</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Initialize app
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeTheme();
-            generateMenuSections();
-            showCategory('soups');
-            updateScrollProgress();
-            setupEventListeners();
-        });
+    <!-- ==================== Contact Section ==================== -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">تواصل معنا</h2>
+            <div class="row g-4">
+                <!-- Central Contact Information -->
+                <div class="col-lg-12">
+                    <div class="contact-info-container">
+                        <div class="row g-4 justify-content-center">
+                            <!-- Card 1 - Phone -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="contact-card-centered">
+                                    <div class="contact-card-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <h3 class="contact-card-title">رقم الهاتف</h3>
+                                    <p class="contact-card-text">
+                                        <a href="tel:+966501234567">0552552492</a>
+                                    </p>
+                            
+                                </div>
+                            </div>
 
-        // Theme Functions
-        function initializeTheme() {
-            // Check for saved theme preference or default to 'light'
-            const savedTheme = getSavedTheme() || 'light';
-            setTheme(savedTheme);
-        }
+                            <!-- Card 2 - Location -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="contact-card-centered">
+                                    <div class="contact-card-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <h3 class="contact-card-title">الموقع</h3>
+                                    <p class="contact-card-text">
+                                        جده<br>المملكة العربية السعودية
+                                    </p>
+                                </div>
+                            </div>
 
-        function getSavedTheme() {
-            // Since localStorage is blocked, we'll use a global variable
-            return window.savedTheme || 'light';
-        }
+                            <!-- Card 3 - WhatsApp -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="contact-card-centered">
+                                    <div class="contact-card-icon" style="background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <h3 class="contact-card-title">واتساب</h3>
+                                    <p class="contact-card-text">
+                                        <a href="https://wa.me/0552552492" target="_blank">0552552492</a>
+                                    </p>
+                                    <small class="contact-card-description">للتواصل الفوري والسريع</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        function saveTheme(theme) {
-            window.savedTheme = theme;
-        }
-
-        function toggleTheme() {
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            setTheme(newTheme);
-        }
-
-        function setTheme(theme) {
-            currentTheme = theme;
-            document.documentElement.setAttribute('data-theme', theme);
-            document.body.setAttribute('data-theme', theme);
-            saveTheme(theme);
-            
-            // Update theme-dependent styles
-            updateThemeColors();
-        }
-
-        function updateThemeColors() {
-            const items = document.querySelectorAll('.item-image');
-            const backgrounds = ['var(--color-bg-1)', 'var(--color-bg-2)', 'var(--color-bg-3)', 'var(--color-bg-4)', 'var(--color-bg-5)', 'var(--color-bg-6)', 'var(--color-bg-7)', 'var(--color-bg-8)'];
-            
-            items.forEach((item, index) => {
-                item.style.backgroundColor = backgrounds[index % backgrounds.length];
-            });
-        }
-
-        // Generate menu sections
-        function generateMenuSections() {
-            const content = document.querySelector('.content');
-            
-            Object.keys(menuData).forEach(categoryKey => {
-                const category = menuData[categoryKey];
-                const section = document.createElement('section');
-                section.className = 'menu-section';
-                section.id = categoryKey;
-                
-                const title = document.createElement('h2');
-                title.className = 'section-title';
-                title.textContent = currentLanguage === 'ar' ? category.name_ar : category.name_en;
-                title.setAttribute('data-ar', category.name_ar);
-                title.setAttribute('data-en', category.name_en);
-                
-                const grid = document.createElement('div');
-                grid.className = 'items-grid';
-                
-                category.items.forEach(item => {
-                    const itemDiv = createMenuItem(item);
-                    grid.appendChild(itemDiv);
-                });
-                
-                section.appendChild(title);
-                section.appendChild(grid);
-                content.appendChild(section);
-            });
-        }
-
-        // Create menu item with gradient images
-        function createMenuItem(item) {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'menu-item';
-            
-            const imageDiv = document.createElement('div');
-            imageDiv.className = 'item-image';
-            
-            // Use gradient from item data or fallback
-            if (item.image_gradient) {
-                imageDiv.style.background = item.image_gradient;
-            } else {
-                const backgrounds = ['var(--color-bg-1)', 'var(--color-bg-2)', 'var(--color-bg-3)', 'var(--color-bg-4)', 'var(--color-bg-5)', 'var(--color-bg-6)', 'var(--color-bg-7)', 'var(--color-bg-8)'];
-                imageDiv.style.backgroundColor = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-            }
-            
-            const emojiSpan = document.createElement('span');
-            emojiSpan.className = 'item-emoji';
-            emojiSpan.textContent = '🍽️';
-            imageDiv.appendChild(emojiSpan);
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'item-content';
-            
-            const nameDiv = document.createElement('div');
-            nameDiv.className = 'item-name';
-            nameDiv.textContent = currentLanguage === 'ar' ? item.name_ar : item.name_en;
-            nameDiv.setAttribute('data-ar', item.name_ar);
-            nameDiv.setAttribute('data-en', item.name_en);
-            
-            const priceDiv = document.createElement('div');
-            priceDiv.className = 'item-price';
-            priceDiv.textContent = currentLanguage === 'ar' ? item.price : item.price_en;
-            priceDiv.setAttribute('data-ar', item.price);
-            priceDiv.setAttribute('data-en', item.price_en);
-            
-            contentDiv.appendChild(nameDiv);
-            
-            if (item.desc_ar || item.desc_en) {
-                const descDiv = document.createElement('div');
-                descDiv.className = 'item-description';
-                descDiv.textContent = currentLanguage === 'ar' ? item.desc_ar : item.desc_en;
-                descDiv.setAttribute('data-ar', item.desc_ar || '');
-                descDiv.setAttribute('data-en', item.desc_en || '');
-                contentDiv.appendChild(descDiv);
-            }
-            
-            contentDiv.appendChild(priceDiv);
-            
-            itemDiv.appendChild(imageDiv);
-            itemDiv.appendChild(contentDiv);
-            
-            if (item.badge) {
-                const badge = document.createElement('div');
-                badge.className = `badge ${item.badge}`;
-                badge.textContent = currentLanguage === 'ar' ? 
-                    (item.badge === 'popular' ? 'مميز ⭐' : 'جديد ✨') :
-                    (item.badge === 'popular' ? 'Popular ⭐' : 'New ✨');
-                badge.setAttribute('data-ar', item.badge === 'popular' ? 'مميز ⭐' : 'جديد ✨');
-                badge.setAttribute('data-en', item.badge === 'popular' ? 'Popular ⭐' : 'New ✨');
-                itemDiv.appendChild(badge);
-            }
-            
-            return itemDiv;
-        }
-
-        // Navigation state
-        let isMobileNavOpen = false;
-        let navMode = 'dropdown'; // 'dropdown' or 'horizontal'
-
-        // Setup event listeners
-        function setupEventListeners() {
-            // Desktop navigation items
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const category = item.getAttribute('data-category');
-                    showCategory(category);
-                    updateActiveNav(category);
-                });
-            });
-
-            // Mobile navigation items
-            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-            mobileNavItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const category = item.getAttribute('data-category');
-                    showCategory(category);
-                    updateActiveNav(category);
-                    
-                    // Update selected category text
-                    const selectedText = currentLanguage === 'ar' ? 
-                        item.querySelector('.nav-title').getAttribute('data-ar') : 
-                        item.querySelector('.nav-title').getAttribute('data-en');
-                    document.getElementById('selected-category').textContent = selectedText;
-                    
-                    // Close mobile dropdown
-                    closeMobileNav();
-                });
-            });
-
-            // Scroll progress and nav indicators
-            window.addEventListener('scroll', updateScrollProgress);
-            
-            // Navigation scroll detection
-            const navGrid = document.getElementById('nav-grid');
-            if (navGrid) {
-                navGrid.addEventListener('scroll', updateScrollIndicators);
-                // Initial update
-                setTimeout(updateScrollIndicators, 100);
-            }
-
-            // Close mobile nav when clicking outside
-            document.addEventListener('click', (e) => {
-                const navContainer = document.querySelector('.nav-container');
-                if (isMobileNavOpen && !navContainer.contains(e.target)) {
-                    closeMobileNav();
-                }
-            });
-
-            // Initialize navigation mode for mobile
-            if (window.innerWidth <= 768) {
-                initializeMobileNav();
-            }
-
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                if (window.innerWidth <= 768) {
-                    initializeMobileNav();
-                } else {
-                    // Reset to desktop mode
-                    document.querySelector('.nav-container').classList.remove('horizontal-mode');
-                    closeMobileNav();
-                }
-                updateScrollIndicators();
-            });
-        }
-
-        // Initialize mobile navigation
-        function initializeMobileNav() {
-            // Set initial mode based on screen size
-            const container = document.querySelector('.nav-container');
-            if (window.innerWidth <= 480) {
-                navMode = 'dropdown';
-                container.classList.remove('horizontal-mode');
-            }
-            updateScrollIndicators();
-        }
-
-        // Toggle mobile navigation dropdown
-        function toggleMobileNav() {
-            const dropdown = document.getElementById('mobile-dropdown');
-            const toggle = document.querySelector('.mobile-nav-toggle');
-            
-            if (isMobileNavOpen) {
-                closeMobileNav();
-            } else {
-                dropdown.classList.add('show');
-                toggle.classList.add('active');
-                isMobileNavOpen = true;
-            }
-        }
-
-        // Close mobile navigation
-        function closeMobileNav() {
-            const dropdown = document.getElementById('mobile-dropdown');
-            const toggle = document.querySelector('.mobile-nav-toggle');
-            
-            dropdown.classList.remove('show');
-            toggle.classList.remove('active');
-            isMobileNavOpen = false;
-        }
-
-        // Toggle navigation mode (mobile only)
-        function toggleNavMode() {
-            const container = document.querySelector('.nav-container');
-            
-            if (navMode === 'dropdown') {
-                navMode = 'horizontal';
-                container.classList.add('horizontal-mode');
-                closeMobileNav();
-            } else {
-                navMode = 'dropdown';
-                container.classList.remove('horizontal-mode');
-            }
-            
-            setTimeout(updateScrollIndicators, 100);
-        }
-
-        // Update active navigation state
-        function updateActiveNav(category) {
-            // Update desktop nav
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(nav => nav.classList.remove('active'));
-            const activeDesktop = document.querySelector(`.nav-item[data-category="${category}"]`);
-            if (activeDesktop) activeDesktop.classList.add('active');
-            
-            // Update mobile nav
-            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-            mobileNavItems.forEach(nav => nav.classList.remove('active'));
-            const activeMobile = document.querySelector(`.mobile-nav-item[data-category="${category}"]`);
-            if (activeMobile) activeMobile.classList.add('active');
-        }
-
-        // Scroll navigation horizontally
-        function scrollNavigation(direction) {
-            const navGrid = document.getElementById('nav-grid');
-            const scrollAmount = 200;
-            
-            if (direction === 'left') {
-                navGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                navGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        }
-
-        // Update scroll indicators
-        function updateScrollIndicators() {
-            const navGrid = document.getElementById('nav-grid');
-            const leftIndicator = document.getElementById('scroll-left');
-            const rightIndicator = document.getElementById('scroll-right');
-            
-            if (!navGrid || !leftIndicator || !rightIndicator) return;
-            
-            const { scrollLeft, scrollWidth, clientWidth } = navGrid;
-            
-            // Show/hide left indicator
-            if (scrollLeft > 10) {
-                leftIndicator.style.opacity = '1';
-            } else {
-                leftIndicator.style.opacity = '0';
-            }
-            
-            // Show/hide right indicator
-            if (scrollLeft < scrollWidth - clientWidth - 10) {
-                rightIndicator.style.opacity = '1';
-            } else {
-                rightIndicator.style.opacity = '0';
-            }
-        }
-
-        // Show category
-        function showCategory(categoryKey) {
-            const sections = document.querySelectorAll('.menu-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            const targetSection = document.getElementById(categoryKey);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-        }
-
-        // Toggle language
-        function toggleLanguage() {
-            currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
-            
-            // Update document direction
-            document.documentElement.setAttribute('dir', currentLanguage === 'ar' ? 'rtl' : 'ltr');
-            document.documentElement.setAttribute('lang', currentLanguage);
-            
-            // Update language button
-            document.getElementById('lang-text').textContent = currentLanguage === 'ar' ? 'EN' : 'ع';
-            
-            // Update restaurant title and welcome text
-            document.getElementById('restaurant-title').textContent = 
-                currentLanguage === 'ar' ? 'مطعم توليب' : 'Tolip Restaurant';
-            document.getElementById('welcome-text').textContent = 
-                currentLanguage === 'ar' ? 'مرحباً بكم في منيو مطعم توليب' : 'Welcome to Tolip Restaurant Menu';
-            
-            // Update all elements with data attributes
-            const elementsWithLang = document.querySelectorAll('[data-ar][data-en]');
-            elementsWithLang.forEach(element => {
-                const text = currentLanguage === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
-                if (text) {
-                    element.textContent = text;
-                }
-            });
-            
-            // Update selected category in mobile dropdown
-            const activeCategory = document.querySelector('.mobile-nav-item.active');
-            if (activeCategory) {
-                const selectedText = currentLanguage === 'ar' ? 
-                    activeCategory.querySelector('.nav-title').getAttribute('data-ar') : 
-                    activeCategory.querySelector('.nav-title').getAttribute('data-en');
-                document.getElementById('selected-category').textContent = selectedText;
-            }
-            
-            // Update navigation mode toggle tooltip
-            const navModeToggle = document.querySelector('.nav-mode-toggle');
-            if (navModeToggle) {
-                navModeToggle.title = currentLanguage === 'ar' ? 'تبديل وضع التنقل' : 'Toggle Navigation Mode';
-            }
-        }
-
-        // Update scroll progress
-        function updateScrollProgress() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollProgress = (scrollTop / scrollHeight) * 100;
-            
-            document.querySelector('.scroll-progress').style.width = scrollProgress + '%';
-        }
-
-        // Add ripple effect to clickable elements
-        function createRipple(event) {
-            const button = event.currentTarget;
-            const circle = document.createElement('span');
-            const diameter = Math.max(button.clientWidth, button.clientHeight);
-            const radius = diameter / 2;
-            
-            circle.style.width = circle.style.height = diameter + 'px';
-            circle.style.left = (event.clientX - button.offsetLeft - radius) + 'px';
-            circle.style.top = (event.clientY - button.offsetTop - radius) + 'px';
-            circle.classList.add('ripple');
-            
-            const ripple = button.getElementsByClassName('ripple')[0];
-            if (ripple) {
-                ripple.remove();
-            }
-            
-            button.appendChild(circle);
-        }
-
-        // Add ripple styles
-        const rippleStyles = `
-            .nav-item, .menu-item, .lang-btn {
-                position: relative;
-                overflow: hidden;
-            }
-            
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background-color: rgba(255, 255, 255, 0.3);
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-                pointer-events: none;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = rippleStyles;
-        document.head.appendChild(styleSheet);
-
-        // Add ripple effects
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.nav-item') || e.target.closest('.menu-item') || e.target.closest('.lang-btn')) {
-                createRipple(e);
-            }
-        });
-    </script>
+    <!-- ==================== Footer ==================== -->
+    <footer class="footer-compact">
+        <div class="container">
+            <div class="footer-content-compact">
+                <div class="footer-section-compact">
+                <a class="navbar-brand" href="#home">
+                <img src="12.jpg" alt="صفقة وجودة" class="navbar-logo">
+                <span class="brand-text">صفقة وجودة</span>
+            </a>
+                    <p>شركة متخصصة في حلول الأمان والاتصالات والبنية التحتية التقنية</p>
+                </div>
+                <div class="footer-section-compact">
+                    <h5>الخدمات</h5>
+                    <ul>
+                        <li><a href="#services">كاميرات المراقبة</a></li>
+                        <li><a href="#services">السنترالات</a></li>
+                        <li><a href="#services">أنظمة الحضور</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-compact">
+                    <h5>روابط سريعة</h5>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                        <li><a href="#projects">المشاريع</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom-compact">
+                <p>&copy; 2025 صفقة وجودة - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+</script>
 </body>
 </html>
